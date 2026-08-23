@@ -25,10 +25,10 @@ Node.js 20 이상이 필요합니다.
 1. 이 폴더를 GitHub 저장소에 올립니다.
 2. [vercel.com](https://vercel.com) → **Add New → Project** → 저장소 선택 → Deploy.
    (설정은 건드릴 필요 없이 자동 인식됩니다.)
-3. Vercel 프로젝트 → **Settings → Domains** 에서 `telosix.com` 연결.
-   도메인 등록기관에서 안내되는 A / CNAME 레코드를 넣어주면 됩니다.
-4. `telosix.co.kr` 도 갖고 있다면 같은 화면에서 함께 추가하고
-   **Redirect to telosix.com (307/301)** 로 설정합니다.
+3. Vercel 프로젝트 → **Settings → Domains** 에서 `telosix.co.kr` 연결.
+   도메인 등록기관(가비아 등)에서 안내되는 A / CNAME 레코드를 넣어주면 됩니다.
+4. `telosix.com` 도 갖고 있다면 같은 화면에서 함께 추가하고
+   **Redirect to telosix.co.kr (301)** 로 설정합니다.
    두 주소에서 같은 사이트가 각각 열리면 검색엔진이 중복 문서로 취급하니
    반드시 한쪽으로 넘겨야 합니다.
 
@@ -67,7 +67,7 @@ FAQ를 수정하면 검색결과용 구조화 데이터(FAQ 스키마)도 자동
 
 1. **Google Search Console** 등록 → 소유권 확인 코드 발급 →
    `src/app/layout.tsx` 하단의 `verification` 주석을 해제하고 코드 입력 →
-   `https://telosix.com/sitemap.xml` 제출.
+   `https://telosix.co.kr/sitemap.xml` 제출.
 2. **네이버 서치어드바이저** 등록 → 같은 방식으로 `naver-site-verification` 코드 입력 → 사이트맵 제출.
 3. **Google Analytics 4** 속성 생성 후 측정 ID 연결(필요 시 요청 주세요).
 4. 도메인을 바꾸게 되면 `src/lib/site.ts` 의 `url` 한 줄만 고치면 됩니다.
