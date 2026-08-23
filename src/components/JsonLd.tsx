@@ -6,7 +6,7 @@ export default function JsonLd() {
     "@type": "ProfessionalService",
     "@id": `${site.url}/#organization`,
     name: site.name,
-    alternateName: ["텔로식스", site.legalName],
+    alternateName: ["텔로식", "텔로식스", site.legalName],
     url: site.url,
     logo: {
       "@type": "ImageObject",

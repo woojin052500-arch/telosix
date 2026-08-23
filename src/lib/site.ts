@@ -1,11 +1,11 @@
 export const site = {
   name: "TELOSIX",
-  legalName: "TELOSIX (텔로식스)",
+  legalName: "TELOSIX (텔로식)",
   url: "https://telosix.co.kr",
   locale: "ko_KR",
   tagline: "웹사이트를 만들고, 검색에 올리고, 숫자를 확인합니다",
   description:
-    "TELOSIX(텔로식스)는 웹사이트와 웹서비스를 만드는 개발 스튜디오입니다. 기획부터 개발, 배포, 검색 등록까지 한 사람이 끝까지 맡습니다.",
+    "TELOSIX(텔로식)는 웹사이트와 웹서비스를 만드는 개발 스튜디오입니다. 기획부터 개발, 배포, 검색 등록까지 한 사람이 끝까지 맡습니다.",
   shortDescription: "웹 개발 · SEO",
   email: "woojin052501@gmail.com",
   instagram: "telosix",
@@ -19,6 +19,7 @@ export const site = {
   },
   keywords: [
     "TELOSIX",
+    "텔로식",
     "텔로식스",
     "웹사이트 제작",
     "홈페이지 제작",
@@ -132,7 +133,6 @@ export const credentials = [
   { label: "수상", items: [
     "전국 중학생 창업경진대회 금상 (1위, 2026)",
     "한국정보올림피아드 KOI 동상 · 장려상 (2026)",
-    "AtCoder Regular Contest 224 국내 21위",
   ]},
   { label: "자격", items: [
     "Google Analytics 4",

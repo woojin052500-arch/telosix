@@ -42,7 +42,7 @@ function Intro() {
 
       <div className="rule mt-16 grid grid-cols-[1fr_360px] gap-16 pt-10 max-lg:grid-cols-1 max-lg:gap-10 max-md:mt-10">
         <p className="max-w-[46ch] text-[17px] leading-[1.9] text-muted">
-          TELOSIX는 웹사이트와 웹서비스를 만드는 작은 스튜디오입니다. 기획,
+          TELOSIX(텔로식)는 웹사이트와 웹서비스를 만드는 작은 스튜디오입니다. 기획,
           개발, 배포, 검색 등록까지 한 사람이 처음부터 끝까지 맡습니다. 중간에
           담당자가 바뀌지 않으니 설명을 두 번 할 일도 없습니다.
         </p>
