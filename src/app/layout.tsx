@@ -68,8 +68,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#101e3f",
-  // 데스크톱 고정 폭 사이트 — 모바일에서는 축소된 데스크톱 화면으로 보입니다.
-  width: 1200,
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

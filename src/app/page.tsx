@@ -27,12 +27,12 @@ export default function Home() {
 
 function Intro() {
   return (
-    <section id="top" className="wrap pt-28 pb-24">
+    <section id="top" className="wrap pt-28 pb-24 max-md:pt-14 max-md:pb-16">
       <p className="mono text-steel">
         서울 · 원격 진행 &nbsp;/&nbsp; {site.founded}년 시작
       </p>
 
-      <h1 className="mt-8 text-[62px] font-extrabold leading-[1.16] tracking-[-0.025em]">
+      <h1 className="mt-8 text-[clamp(32px,7.4vw,62px)] font-extrabold leading-[1.16] tracking-[-0.025em] max-md:mt-6">
         웹사이트를 만들고,
         <br />
         검색에 올리고,
@@ -40,7 +40,7 @@ function Intro() {
         <span className="text-brand">숫자를 확인</span>합니다.
       </h1>
 
-      <div className="rule mt-16 grid grid-cols-[1fr_360px] gap-16 pt-10">
+      <div className="rule mt-16 grid grid-cols-[1fr_360px] gap-16 pt-10 max-lg:grid-cols-1 max-lg:gap-10 max-md:mt-10">
         <p className="max-w-[46ch] text-[17px] leading-[1.9] text-muted">
           TELOSIX는 웹사이트와 웹서비스를 만드는 작은 스튜디오입니다. 기획,
           개발, 배포, 검색 등록까지 한 사람이 처음부터 끝까지 맡습니다. 중간에
@@ -88,11 +88,11 @@ function Intro() {
 function Work() {
   return (
     <section id="work" className="rule bg-paper">
-      <div className="wrap split py-24">
+      <div className="wrap split py-24 max-md:py-16">
         <p className="label">01 — 하는 일</p>
 
         <div>
-          <h2 className="text-[34px] font-bold leading-tight tracking-[-0.02em]">
+          <h2 className="text-[clamp(24px,4.6vw,34px)] font-bold leading-tight tracking-[-0.02em]">
             네 가지를 합니다
           </h2>
 
@@ -100,7 +100,7 @@ function Work() {
             {services.map((s) => (
               <article
                 key={s.no}
-                className="grid grid-cols-[120px_1fr] gap-12 border-t border-line py-9"
+                className="grid grid-cols-[120px_1fr] gap-12 border-t border-line py-9 max-md:grid-cols-1 max-md:gap-3 max-md:py-7"
               >
                 <div>
                   <span className="mono text-steel">{s.no}</span>
@@ -126,11 +126,11 @@ function Work() {
 function Process() {
   return (
     <section id="process" className="rule">
-      <div className="wrap split py-24">
+      <div className="wrap split py-24 max-md:py-16">
         <p className="label">02 — 진행</p>
 
         <div>
-          <h2 className="text-[34px] font-bold leading-tight tracking-[-0.02em]">
+          <h2 className="text-[clamp(24px,4.6vw,34px)] font-bold leading-tight tracking-[-0.02em]">
             어떻게 굴러가는지
           </h2>
           <p className="mt-5 max-w-[52ch] text-[15.5px] leading-[1.9] text-muted">
@@ -138,7 +138,7 @@ function Process() {
             멈춰도 됩니다.
           </p>
 
-          <table className="mt-12 w-full border-collapse text-left">
+          <table className="stack-table mt-12 w-full border-collapse text-left max-md:mt-8">
             <thead>
               <tr className="border-y border-line">
                 <th scope="col" className="mono w-24 py-3 font-normal text-steel">
@@ -157,11 +157,28 @@ function Process() {
             </thead>
             <tbody>
               {process.map((p) => (
-                <tr key={p.step} className="border-b border-line-soft align-top">
-                  <td className="mono py-5 text-steel">{p.step}</td>
-                  <td className="py-5 text-[15.5px] font-bold">{p.title}</td>
-                  <td className="py-5 pr-10 text-[15.5px] text-muted">{p.doing}</td>
-                  <td className="py-5 text-[15.5px] text-ink">{p.out}</td>
+                <tr
+                  key={p.step}
+                  className="border-b border-line-soft align-top"
+                >
+                  <td data-mobile-hidden className="mono py-5 text-steel">
+                    {p.step}
+                  </td>
+                  <td
+                    data-label={`단계 ${p.step}`}
+                    className="py-5 text-[15.5px] font-bold"
+                  >
+                    {p.title}
+                  </td>
+                  <td
+                    data-label="하는 일"
+                    className="py-5 pr-10 text-[15.5px] text-muted max-md:pr-0"
+                  >
+                    {p.doing}
+                  </td>
+                  <td data-label="나오는 것" className="py-5 text-[15.5px] text-ink">
+                    {p.out}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -177,11 +194,11 @@ function Process() {
 function Index() {
   return (
     <section id="index" className="rule bg-paper">
-      <div className="wrap split py-24">
+      <div className="wrap split py-24 max-md:py-16">
         <p className="label">03 — 만든 것</p>
 
         <div>
-          <h2 className="text-[34px] font-bold leading-tight tracking-[-0.02em]">
+          <h2 className="text-[clamp(24px,4.6vw,34px)] font-bold leading-tight tracking-[-0.02em]">
             직접 만들고 직접 운영한 것들
           </h2>
           <p className="mt-5 max-w-[54ch] text-[15.5px] leading-[1.9] text-muted">
@@ -193,7 +210,7 @@ function Index() {
             {works.map((w) => (
               <li
                 key={w.title}
-                className="grid grid-cols-[68px_1fr_210px] gap-10 border-t border-line py-7"
+                className="grid grid-cols-[68px_1fr_210px] gap-10 border-t border-line py-7 max-md:grid-cols-1 max-md:gap-2"
               >
                 <span className="mono pt-1 text-steel">{w.year}</span>
                 <div>
@@ -203,7 +220,7 @@ function Index() {
                   </h3>
                   <p className="mt-2 max-w-[52ch] text-[15px] text-muted">{w.note}</p>
                 </div>
-                <span className="pt-1 text-right text-[14px] font-bold text-brand">
+                <span className="pt-1 text-right text-[14px] font-bold text-brand max-md:pt-1 max-md:text-left">
                   {w.result}
                 </span>
               </li>
@@ -233,12 +250,12 @@ function Index() {
 function Founder() {
   return (
     <section id="founder" className="rule">
-      <div className="wrap split py-24">
+      <div className="wrap split py-24 max-md:py-16">
         <p className="label">04 — 대표</p>
 
         <div>
           <div className="flex items-baseline gap-4">
-            <h2 className="text-[34px] font-bold tracking-[-0.02em]">
+            <h2 className="text-[clamp(24px,4.6vw,34px)] font-bold tracking-[-0.02em]">
               {site.founder.name}
             </h2>
             <span className="mono text-steel">
@@ -246,7 +263,7 @@ function Founder() {
             </span>
           </div>
 
-          <div className="mt-8 grid grid-cols-[1fr_300px] gap-16">
+          <div className="mt-8 grid grid-cols-[1fr_300px] gap-16 max-lg:grid-cols-1 max-lg:gap-10">
             <div className="max-w-[54ch] space-y-5 text-[15.5px] leading-[1.95] text-muted">
               <p>
                 중학교 2학년입니다. 에듀테크 스타트업 WJedulab을 만들면서 개발을
@@ -301,11 +318,11 @@ function Founder() {
 function Questions() {
   return (
     <section id="questions" className="rule bg-paper">
-      <div className="wrap split py-24">
+      <div className="wrap split py-24 max-md:py-16">
         <p className="label">05 — 질문</p>
 
         <div>
-          <h2 className="text-[34px] font-bold leading-tight tracking-[-0.02em]">
+          <h2 className="text-[clamp(24px,4.6vw,34px)] font-bold leading-tight tracking-[-0.02em]">
             자주 받는 질문
           </h2>
 
@@ -313,7 +330,7 @@ function Questions() {
             {faqs.map((f) => (
               <div
                 key={f.q}
-                className="grid grid-cols-[300px_1fr] gap-12 border-t border-line py-8"
+                className="grid grid-cols-[300px_1fr] gap-12 border-t border-line py-8 max-md:grid-cols-1 max-md:gap-2.5 max-md:py-6"
               >
                 <dt className="text-[16px] font-bold leading-relaxed">{f.q}</dt>
                 <dd className="max-w-[56ch] text-[15.5px] leading-[1.9] text-muted">
@@ -339,18 +356,18 @@ function Contact() {
         width={512}
         height={240}
         aria-hidden
-        className="pointer-events-none absolute -right-16 top-1/2 w-[420px] -translate-y-1/2 opacity-[0.07] brightness-0 invert"
+        className="pointer-events-none absolute -right-16 top-1/2 w-[420px] -translate-y-1/2 opacity-[0.07] brightness-0 invert max-md:hidden"
       />
-      <div className="wrap relative py-28">
+      <div className="wrap relative py-28 max-md:py-16">
         <p className="mono text-white/40">연락</p>
-        <p className="mt-8 max-w-[40ch] text-[26px] font-bold leading-[1.5] tracking-[-0.01em]">
+        <p className="mt-8 max-w-[40ch] text-[clamp(19px,3.4vw,26px)] font-bold leading-[1.5] tracking-[-0.01em] max-md:mt-6">
           만들고 싶은 게 있으면 한 줄만 보내주세요. 원하는 것, 예산, 일정 중
           아는 것만 적어도 됩니다.
         </p>
-        <p className="mt-12">
+        <p className="mt-12 max-md:mt-8">
           <a
             href={`mailto:${site.email}?subject=[TELOSIX] 문의`}
-            className="link-u text-[38px] font-extrabold tracking-[-0.02em]"
+            className="link-u text-[clamp(19px,5vw,38px)] font-extrabold tracking-[-0.02em]"
           >
             {site.email}
           </a>
