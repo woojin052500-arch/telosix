@@ -60,8 +60,11 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
-  // 검색엔진 소유 확인 코드는 발급 후 아래에 채워 넣으세요.
-  // verification: { google: "구글서치콘솔-코드", other: { "naver-site-verification": "네이버-코드" } },
+  verification: {
+    google: "OMbMlFTyXSRWw4hQgNRSPVxrb7mufuOR5xAKa1Bpn04",
+    // 네이버 서치어드바이저 코드는 발급 후 아래 주석을 풀고 채워 넣으세요.
+    // other: { "naver-site-verification": "네이버-코드" },
+  },
 };
 
 export const viewport: Viewport = {
