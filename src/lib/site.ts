@@ -1,7 +1,7 @@
 export const site = {
   name: "TELOSIX",
   legalName: "TELOSIX (텔로식스)",
-  url: "https://telosix.co.kr",
+  url: "https://telosix.com",
   locale: "ko_KR",
   tagline: "웹사이트를 만들고, 검색에 올리고, 숫자를 확인합니다",
   description:

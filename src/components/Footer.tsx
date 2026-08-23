@@ -19,7 +19,7 @@ export default function Footer() {
             @{site.instagram}
           </a>
           <span className="px-3">·</span>
-          telosix.co.kr
+          telosix.com
         </p>
       </div>
     </footer>
