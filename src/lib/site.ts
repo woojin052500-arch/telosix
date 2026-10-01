@@ -33,6 +33,14 @@ export const site = {
   ],
 } as const;
 
+/** 히어로 아래 지표 줄. 전부 실제 기록입니다. */
+export const stats = [
+  { n: "05", unit: "", label: "직접 출시한 서비스" },
+  { n: "2", unit: "만 뷰", label: "에듀테크 웹, 출시 한 달 조회수" },
+  { n: "26", unit: "만원", label: "광고판 서비스, 출시 4일 매출" },
+  { n: "24", unit: "시간", label: "문의 답장까지 보통 걸리는 시간" },
+];
+
 export const services = [
   {
     no: "01",
