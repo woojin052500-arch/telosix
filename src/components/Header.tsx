@@ -1,60 +1,96 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 
 const nav = [
-  { href: "#work", label: "하는 일" },
-  { href: "#index", label: "만든 것" },
+  { href: "#services", label: "하는 일" },
+  { href: "#process", label: "진행" },
+  { href: "#work", label: "만든 것" },
   { href: "#founder", label: "대표" },
-  { href: "#questions", label: "질문" },
+  { href: "#faq", label: "질문" },
 ];
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onResize = () => window.innerWidth > 900 && setOpen(false);
+    onScroll();
+    document.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("keydown", onKey);
+    window.addEventListener("resize", onResize);
+
+    // 화면 가운데에 걸린 섹션을 메뉴에 표시합니다.
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
+      { rootMargin: "-45% 0px -50% 0px" },
+    );
+    nav.forEach((n) => {
+      const el = document.querySelector(n.href);
+      if (el) io.observe(el);
+    });
+
+    return () => {
+      document.removeEventListener("scroll", onScroll);
+      document.removeEventListener("keydown", onKey);
+      window.removeEventListener("resize", onResize);
+      io.disconnect();
+    };
+  }, []);
+
   return (
-    <header className="rule border-t-0">
-      <div className="wrap flex items-center justify-between py-6 max-md:flex-col max-md:items-start max-md:gap-4 max-md:py-5">
-        <div className="flex items-center justify-between max-md:w-full">
-          <a href="#top" className="flex items-baseline gap-3" aria-label="TELOSIX 홈">
-            <Image
-              src="/logo-mark.png"
-              alt=""
-              width={512}
-              height={240}
-              priority
-              className="w-7 translate-y-1"
-            />
-            <span className="text-[17px] font-extrabold tracking-[0.2em]">TELOSIX</span>
-            <span className="mono text-steel max-md:hidden">웹 개발 스튜디오</span>
+    <>
+      <header className={`hdr${scrolled || open ? " scrolled" : ""}`}>
+        <div className="wrap row">
+          <a className="brand" href="#top" aria-label="TELOSIX 홈">
+            <span className="mark" aria-hidden>
+              T
+            </span>
+            TELOSIX
+            <small>웹 개발 스튜디오</small>
           </a>
-
-          <a
-            href={`mailto:${site.email}`}
-            className="mono border border-ink px-4 py-2 text-ink hover:bg-ink hover:text-white md:hidden"
+          <nav className="nav" aria-label="주요 메뉴">
+            {nav.map((n) => (
+              <a key={n.href} href={n.href} className={active === n.href ? "active" : undefined}>
+                {n.label}
+              </a>
+            ))}
+          </nav>
+          <a className="cta-pill" href="#contact">
+            문의하기 <span aria-hidden>↗</span>
+          </a>
+          <button
+            className="burger"
+            type="button"
+            aria-expanded={open}
+            aria-controls="drawer"
+            aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+            onClick={() => setOpen((v) => !v)}
           >
-            문의
-          </a>
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
+      </header>
 
-        <nav
-          aria-label="주요 메뉴"
-          className="flex items-center gap-9 max-md:w-full max-md:justify-between max-md:gap-0"
-        >
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="whitespace-nowrap text-[14px] text-muted hover:text-ink max-md:text-[13px]"
-            >
-              {n.label}
+      <div className={`drawer${open ? " open" : ""}`} id="drawer">
+        <nav aria-label="모바일 메뉴">
+          {nav.map((n, i) => (
+            <a key={n.href} href={n.href} onClick={() => setOpen(false)}>
+              {n.label} <small>{String(i + 1).padStart(2, "0")}</small>
             </a>
           ))}
-          <a
-            href={`mailto:${site.email}`}
-            className="mono whitespace-nowrap border border-ink px-4 py-2 text-ink hover:bg-ink hover:text-white max-md:hidden"
-          >
-            문의 보내기
+          <a className="cta-pill" href={`mailto:${site.email}`} onClick={() => setOpen(false)}>
+            메일로 문의하기 ↗
           </a>
         </nav>
       </div>
-    </header>
+    </>
   );
 }
