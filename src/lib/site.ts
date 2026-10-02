@@ -36,9 +36,9 @@ export const site = {
 /** 히어로 아래 지표 줄. 전부 실제 기록입니다. */
 export const stats = [
   { n: "05", unit: "", label: "직접 출시한 서비스" },
-  { n: "2", unit: "만 뷰", label: "에듀테크 웹, 출시 한 달 조회수" },
+  { n: "75", unit: "만+", label: "홍보 영상 누적 조회수" },
+  { n: "9", unit: "천+", label: "에듀테크 웹 누적 클릭" },
   { n: "26", unit: "만원", label: "광고판 서비스, 출시 4일 매출" },
-  { n: "24", unit: "시간", label: "문의 답장까지 보통 걸리는 시간" },
 ];
 
 export const services = [
@@ -104,7 +104,7 @@ export const works = [
     year: "2026",
     title: "스코어랩 · 스코어위키",
     kind: "에듀테크 웹",
-    result: "한 달 만에 조회수 20,000",
+    result: "누적 클릭 약 9,000회",
     note: "대입·내신 데이터를 정리해 보여주는 플랫폼. 검색 유입으로만 키웠습니다.",
   },
   {
