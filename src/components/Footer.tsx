@@ -9,7 +9,7 @@ export default function Footer() {
         </p>
         <div className="bar">
           <span>
-            © {new Date().getFullYear()} TELOSIX (텔로식) · 대표 {site.founder.name}
+            © {new Date().getFullYear()} TELOSIX (텔로식, 구 WJedulab) · 대표 {site.founder.name}
           </span>
           <span>
             <a href={`mailto:${site.email}`}>{site.email}</a>

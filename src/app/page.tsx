@@ -2,7 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Effects from "@/components/Effects";
 import JsonLd from "@/components/JsonLd";
-import { credentials, faqs, process, services, site, stats, works } from "@/lib/site";
+import { credentials, faqs, press, process, services, site, stats, works } from "@/lib/site";
 
 export default function Home() {
   return (
@@ -48,7 +48,7 @@ function Hero() {
         <div>
           <p className="kicker rv">
             <span className="dot" />
-            TELOSIX — Web Studio · Since {site.founded}
+            TELOSIX (구 {site.formerName}) — Web Studio · Since {site.founded}
           </p>
           <h1 className="rv">
             웹사이트를 만들고,
@@ -58,7 +58,7 @@ function Hero() {
             <span className="acc">숫자를 확인</span>합니다.
           </h1>
           <p className="lede rv">
-            <b>TELOSIX(텔로식)</b>는 웹사이트와 웹서비스를 만드는 작은 스튜디오입니다. 기획, 개발,
+            <b>TELOSIX(텔로식, 구 {site.formerName})</b>는 웹사이트와 웹서비스를 만드는 작은 스튜디오입니다. 기획, 개발,
             배포, 검색 등록까지 <b>한 사람이 처음부터 끝까지</b> 맡습니다. 중간에 담당자가 바뀌지
             않으니 설명을 두 번 할 일도 없습니다.
           </p>
@@ -245,6 +245,16 @@ function Work() {
             </li>
           ))}
         </ol>
+        {press.map((p) => (
+          <div className="note rv" key={p.url}>
+            <p>
+              <b>Press</b> — {p.outlet} 「{p.title}」 보도
+            </p>
+            <a href={p.url} target="_blank" rel="noopener noreferrer">
+              기사 읽기 ↗
+            </a>
+          </div>
+        ))}
         <div className="note rv">
           <p>
             <b>더 자세한 기록</b> — 서비스별 화면과 수상·자격 내역은 대표 포트폴리오에 정리해
@@ -282,7 +292,7 @@ function Founder() {
           <div className="col rv">
             <h3>대표 — {site.founder.name}</h3>
             <p>
-              중학교 2학년입니다. 에듀테크 스타트업 <b>WJedulab</b>을 만들면서 개발을 시작했고,
+              중학교 2학년입니다. 에듀테크 스타트업 <b>WJedulab</b>(현 TELOSIX)을 만들면서 개발을 시작했고,
               만든 것을 실제로 사람들 앞에 내보내는 데 재미를 붙였습니다. 지금까지{" "}
               <b>다섯 개의 서비스</b>를 출시했습니다.
             </p>
@@ -292,6 +302,10 @@ function Founder() {
               나왔습니다.
             </p>
             <p>TELOSIX는 그 방식을 그대로 다른 분들의 서비스에 적용하려고 만든 회사입니다.</p>
+            <p>
+              회사 이름은 <b>우진애드링크</b>에서 <b>WJedulab</b>을 거쳐 지금의 <b>TELOSIX</b>가
+              됐습니다. 이름에서 대표 이름이 빠진 만큼, 누구나 쓰는 서비스를 만드는 회사가 되려 합니다.
+            </p>
             <p>
               <a href={site.founder.portfolio} target="_blank" rel="noopener noreferrer">
                 포트폴리오 보기 →

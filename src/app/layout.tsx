@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — 웹사이트 · 웹서비스 개발`,
+    default: `${site.name} (구 ${site.formerName}) — 웹사이트 · 웹서비스 개발`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: `${site.name} | ${site.tagline}`,
+    title: `${site.name} (구 ${site.formerName}) | ${site.tagline}`,
     description: site.description,
     images: [
       {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | ${site.tagline}`,
+    title: `${site.name} (구 ${site.formerName}) | ${site.tagline}`,
     description: site.description,
     images: ["/og-image.png"],
   },

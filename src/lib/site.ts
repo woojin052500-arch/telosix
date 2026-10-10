@@ -1,11 +1,12 @@
 export const site = {
   name: "TELOSIX",
-  legalName: "TELOSIX (텔로식)",
+  legalName: "TELOSIX (텔로식, 구 WJedulab)",
+  formerName: "WJedulab",
   url: "https://telosix.co.kr",
   locale: "ko_KR",
   tagline: "웹사이트를 만들고, 검색에 올리고, 숫자를 확인합니다",
   description:
-    "TELOSIX(텔로식)는 웹사이트와 웹서비스를 만드는 개발 스튜디오입니다. 기획부터 개발, 배포, 검색 등록까지 한 사람이 끝까지 맡습니다.",
+    "TELOSIX(텔로식, 구 WJedulab)는 웹사이트와 웹서비스를 만드는 개발 스튜디오입니다. 기획부터 개발, 배포, 검색 등록까지 한 사람이 끝까지 맡습니다.",
   shortDescription: "웹 개발 · SEO",
   email: "woojin052501@gmail.com",
   instagram: "telosix",
@@ -21,6 +22,8 @@ export const site = {
     "TELOSIX",
     "텔로식",
     "텔로식스",
+    "WJedulab",
+    "구 WJedulab",
     "웹사이트 제작",
     "홈페이지 제작",
     "웹개발 외주",
@@ -39,6 +42,15 @@ export const stats = [
   { n: "9,360", unit: "회", label: "스코어랩 구글 검색 누적 클릭" },
   { n: "51", unit: "개교", label: "스코어랩 등록 학교 (12개교에서 시작)" },
   { n: "12", unit: "곳", label: "500원 광고판 입점 광고주" },
+];
+
+/** 언론 보도 */
+export const press = [
+  {
+    outlet: "내외뉴스통신",
+    title: "TELOSIX 대표 염우진 인터뷰",
+    url: "http://www.nbnbiz.co.kr/news/articleView.html?idxno=46236",
+  },
 ];
 
 export const services = [
