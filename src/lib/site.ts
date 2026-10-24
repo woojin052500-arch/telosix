@@ -1,16 +1,18 @@
 export const site = {
   name: "TELOSIX",
-  legalName: "TELOSIX (텔로식)",
+  legalName: "TELOSIX (텔로식, 구 WJedulab)",
+  formerName: "WJedulab",
   url: "https://telosix.co.kr",
   locale: "ko_KR",
-  tagline: "웹사이트를 만들고, 검색에 올리고, 숫자를 확인합니다",
+  tagline: "웹사이트와 웹서비스를 만드는 1인 회사",
   description:
-    "TELOSIX(텔로식)는 웹사이트와 웹서비스를 만드는 개발 스튜디오입니다. 기획부터 개발, 배포, 검색 등록까지 한 사람이 끝까지 맡습니다.",
+    "TELOSIX(텔로식, 구 WJedulab)는 웹사이트와 웹서비스를 만드는 1인 회사입니다. 기획, 개발, 배포, 검색 등록까지 대표가 직접 합니다.",
   shortDescription: "웹 개발 · SEO",
   email: "woojin052501@gmail.com",
   instagram: "telosix",
   instagramUrl: "https://instagram.com/telosix",
   founded: "2026",
+  foundedMonth: "2026년 3월",
   founder: {
     name: "염우진",
     nameEn: "Woojin Yeom",
@@ -21,6 +23,8 @@ export const site = {
     "TELOSIX",
     "텔로식",
     "텔로식스",
+    "WJedulab",
+    "구 WJedulab",
     "웹사이트 제작",
     "홈페이지 제작",
     "웹개발 외주",
@@ -33,12 +37,13 @@ export const site = {
   ],
 } as const;
 
-/** 히어로 아래 지표 줄. 전부 실제 기록입니다. */
-export const stats = [
-  { n: "75", unit: "만", label: "유료 광고 없이 릴스 1개 조회수" },
-  { n: "9,360", unit: "회", label: "스코어랩 구글 검색 누적 클릭" },
-  { n: "51", unit: "개교", label: "스코어랩 등록 학교 (12개교에서 시작)" },
-  { n: "12", unit: "곳", label: "500원 광고판 입점 광고주" },
+/** 언론 보도 */
+export const press = [
+  {
+    outlet: "내외뉴스통신",
+    title: "TELOSIX 대표 염우진 인터뷰",
+    url: "http://www.nbnbiz.co.kr/news/articleView.html?idxno=46236",
+  },
 ];
 
 export const services = [
@@ -67,7 +72,7 @@ export const services = [
     no: "04",
     title: "앱과 유지보수",
     desc:
-      "웹으로 만든 서비스를 앱 형태로 감싸 스토어에 올립니다. 배포가 끝이 아니라서, 원하시면 이후 수정과 개선도 이어서 맡습니다.",
+      "웹으로 만든 서비스를 앱으로 감싸 스토어에 올립니다. 출시한 뒤에 고칠 것이 생기면 이어서 맡을 수 있습니다.",
     meta: "Capacitor · 스토어 배포 · 운영",
   },
 ];
@@ -101,8 +106,9 @@ export const process = [
 
 export const works = [
   {
-    year: "2026",
+    year: "2026.01",
     title: "스코어랩 (ScoreLab)",
+    url: "https://highschool-score.com",
     kind: "고입 에듀테크",
     result: "구글 검색 클릭 9,360회",
     note: "내 점수로 갈 수 있는 고등학교를 보여주는 고입 합격 가능성 분석 서비스. 스코어위키와 특목고 합격 확률 계산기를 하나로 합쳤고, 이용자 요청을 받아 12개교에서 51개교로 늘렸습니다.",
@@ -110,6 +116,7 @@ export const works = [
   {
     year: "2026",
     title: "Certa",
+    url: "https://certa-theta.vercel.app",
     kind: "정보 서비스",
     result: "자격증 108종 정리",
     note: "흩어져 있던 자격증 정보를 한자리에 모아 비교할 수 있게 했습니다.",
@@ -117,6 +124,7 @@ export const works = [
   {
     year: "2026",
     title: "끌 (Kkeul)",
+    url: "https://kkeul.vercel.app",
     kind: "매칭 앱",
     result: "출시 2주, 100여 명 설치",
     note: "대회 팀원을 찾아 주는 매칭 앱. Google Play 스토어에 정식 출시했습니다.",
@@ -169,6 +177,6 @@ export const faqs = [
   },
   {
     q: "대표가 중학생인데 괜찮을까요?",
-    a: "나이보다는 만든 것으로 봐 주시면 좋겠습니다. 지금까지 다섯 개의 서비스를 직접 출시해 트래픽과 매출을 냈고, 아래 작업 목록의 숫자는 전부 실제 기록입니다. 첫 대화에서 판단해 보셔도 늦지 않습니다.",
+    a: "나이보다는 만든 것으로 봐 주시면 좋겠습니다. 지금까지 다섯 개의 서비스를 직접 출시해 트래픽과 매출을 냈고, 위 작업 목록의 숫자는 전부 실제 기록입니다. 첫 대화에서 판단해 보셔도 늦지 않습니다.",
   },
 ];

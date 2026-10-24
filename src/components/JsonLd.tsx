@@ -1,4 +1,4 @@
-import { faqs, services, site, works } from "@/lib/site";
+import { faqs, press, services, site, works } from "@/lib/site";
 
 /** 검색엔진용 구조화 데이터(schema.org). 리치 결과 노출에 사용됩니다. */
 export default function JsonLd() {
@@ -6,7 +6,7 @@ export default function JsonLd() {
     "@type": "ProfessionalService",
     "@id": `${site.url}/#organization`,
     name: site.name,
-    alternateName: ["텔로식", "텔로식스", site.legalName],
+    alternateName: ["텔로식", "텔로식스", site.formerName, site.legalName],
     url: site.url,
     logo: {
       "@type": "ImageObject",
@@ -28,6 +28,12 @@ export default function JsonLd() {
       "웹 애널리틱스",
     ],
     sameAs: [site.instagramUrl, site.founder.portfolio],
+    subjectOf: press.map((p) => ({
+      "@type": "NewsArticle",
+      headline: p.title,
+      url: p.url,
+      publisher: { "@type": "Organization", name: p.outlet },
+    })),
     founder: { "@id": `${site.url}/#founder` },
     hasOfferCatalog: {
       "@type": "OfferCatalog",

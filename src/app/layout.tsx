@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — 웹사이트 · 웹서비스 개발`,
+    default: `${site.name} (구 ${site.formerName}) — 웹사이트 · 웹서비스 개발`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: site.name,
-    title: `${site.name} | ${site.tagline}`,
+    title: `${site.name} (구 ${site.formerName}) | ${site.tagline}`,
     description: site.description,
     images: [
       {
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `${site.name} | ${site.tagline}`,
+    title: `${site.name} (구 ${site.formerName}) | ${site.tagline}`,
     description: site.description,
     images: ["/og-image.png"],
   },
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0a0a0b",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -76,24 +76,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko">
       <head>
         {/* Pretendard(자체 호스팅, 동적 서브셋) — 필요한 글자만 내려받습니다. */}
         <link rel="stylesheet" href="/fonts/pretendard/pretendard.css" />
-        <link
-          rel="preload"
-          href="/fonts/outfit/outfit-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        {/* 등장 효과는 JS가 있을 때만 적용합니다(첫 페인트 전에 표시). */}
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
       <body className="antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-lime focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-night"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:text-white"
         >
           본문 바로가기
         </a>
