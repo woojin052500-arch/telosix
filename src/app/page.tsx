@@ -29,14 +29,19 @@ function Intro() {
   return (
     <section className="intro" id="top">
       <div className="tx">
-        <h1>텔로식은 웹사이트와 웹서비스를 만드는 1인 회사입니다.</h1>
-        <p>
-          대표 <b>{site.founder.name}</b>이 기획, 개발, 배포, 검색 등록까지 직접 합니다. 스코어랩, 끌,
-          500원 광고판을 만들어 운영하고 있고, 같은 방식으로 다른 분들의 사이트도 만듭니다.
+        <h1>
+          <span className="sr-only">TELOSIX(텔로식): </span>
+          웹사이트와 웹서비스를
+          <br />
+          만드는 <em>1인 회사</em>
+        </h1>
+        <p className="lede">
+          텔로식은 대표 <b>{site.founder.name}</b>이 기획, 개발, 배포, 검색 등록까지 직접 하는
+          회사입니다. 스코어랩, 끌, 500원 광고판을 만들어 운영하고 있고, 같은 방식으로 다른 분들의
+          사이트도 만듭니다.
         </p>
-        <p>
-          {site.foundedMonth}에 창업했고 사업자등록을 마쳤습니다. 이전 이름은 {site.formerName}
-          입니다.
+        <p className="facts">
+          {site.foundedMonth} 창업 · 사업자등록 완료 · 구 {site.formerName}
         </p>
         <p className="reach">
           문의는 <a href={`mailto:${site.email}`}>{site.email}</a> 또는{" "}

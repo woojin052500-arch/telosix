@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     description: site.description,
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.png?v=2",
         width: 1200,
         height: 630,
-        alt: `${site.name} — ${site.tagline}`,
+        alt: `${site.name}: ${site.tagline}`,
       },
     ],
   },
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${site.name} (구 ${site.formerName}) | ${site.tagline}`,
     description: site.description,
-    images: ["/og-image.png"],
+    images: ["/og-image.png?v=2"],
   },
   icons: {
     icon: [

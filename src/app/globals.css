@@ -75,21 +75,25 @@
 
 /* ----------------------------------------------------------------- intro */
 
-.intro { display: grid; grid-template-columns: 1fr 220px; gap: 56px; align-items: center; padding: 64px 0 56px; }
-.intro h1 { margin: 0; font-size: clamp(26px, 4vw, 36px); line-height: 1.45; font-weight: 700; letter-spacing: -0.02em; }
+.intro { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 64px; align-items: center; padding: 88px 0 80px; }
+.intro h1 { margin: 0; font-size: clamp(30px, 6vw, 58px); line-height: 1.28; font-weight: 700; letter-spacing: -0.03em; }
+.intro h1 em { font-style: normal; color: var(--color-brand); }
 .intro p { margin: 18px 0 0; color: var(--color-muted); max-width: 36em; }
+.intro .lede { margin-top: 28px; font-size: 17px; }
+.intro .facts { margin-top: 10px; font-size: 14.5px; color: var(--color-faint); }
 .intro p b { color: var(--color-ink); font-weight: 600; }
 .intro .reach { margin-top: 24px; font-size: 15px; color: var(--color-ink); }
-.intro .mark { width: 100%; height: auto; }
+.intro .mark { width: 100%; height: auto; align-self: start; margin-top: 10px; }
 @media (max-width: 760px) {
-  .intro { grid-template-columns: 1fr; gap: 28px; padding: 40px 0; }
-  .intro .mark { width: 120px; order: -1; }
+  .intro { grid-template-columns: 1fr; gap: 28px; padding: 44px 0 48px; }
+  .intro .mark { width: 128px; order: -1; margin-top: 0; }
+  .intro .lede { font-size: 16px; margin-top: 20px; }
 }
 
 /* --------------------------------------------------------------- section */
 
-.sec { border-top: 1px solid var(--color-line); padding: 48px 0 52px; }
-.sec h2 { margin: 0 0 6px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.sec { border-top: 1px solid var(--color-line); padding: 56px 0 60px; }
+.sec h2 { margin: 0 0 8px; font-size: 26px; font-weight: 700; letter-spacing: -0.02em; }
 .sec .sub { margin: 0 0 28px; color: var(--color-muted); font-size: 15.5px; max-width: 40em; }
 .sec h3 { margin: 0; font-size: 17px; font-weight: 700; }
 
