@@ -2,6 +2,8 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import RailDots from "@/components/RailDots";
+import Reveal from "@/components/Reveal";
 import { credentials, faqs, press, process, services, site, works } from "@/lib/site";
 
 /** 숫자 옆 각주 번호. 푸터의 출처 목록으로 이어집니다. */
@@ -26,6 +28,7 @@ export default function Home() {
     <>
       <JsonLd />
       <Header />
+      <Reveal />
       <main id="main">
         <Hero />
         <Featured />
@@ -76,7 +79,7 @@ function Hero() {
 function Featured() {
   const w = byTitle("스코어랩");
   return (
-    <section className="tile gray" id="work">
+    <section className="tile gray feature" id="work">
       <div className="inner">
         <p className="eyebrow">직접 만들고 운영하는 서비스</p>
         <h2>스코어랩</h2>
@@ -87,7 +90,7 @@ function Featured() {
           </a>
         </div>
       </div>
-      <div className="figures">
+      <div className="figures" data-reveal>
         <div className="figure">
           <span className="n">
             9,360<small>회</small>
@@ -126,7 +129,7 @@ function Grid() {
   return (
     <section className="grid" aria-label="다른 서비스">
       {items.map(({ w, name, tone, big, ref, label }) => (
-        <article key={name} className={`tile ${tone}`}>
+        <article key={name} className={`tile ${tone}`} data-reveal>
           <p className="kind">{w.kind}</p>
           <h2>{name}</h2>
           <p className="sub">{w.headline}</p>
@@ -156,11 +159,11 @@ function Services() {
   return (
     <section className="band" id="services">
       <div className="inner">
-        <div className="head">
+        <div className="head" data-reveal>
           <h2>하는 일</h2>
           <p>외주로 맡을 수 있는 일은 네 가지입니다. 직접 운영하는 서비스와 같은 방식으로 만듭니다.</p>
         </div>
-        <div className="cards">
+        <div className="cards" id="svc-rail">
           {services.map((s) => (
             <article className="card" key={s.title}>
               <h3>{s.title}</h3>
@@ -169,6 +172,7 @@ function Services() {
             </article>
           ))}
         </div>
+        <RailDots railId="svc-rail" count={services.length} label="하는 일 카드 위치" />
       </div>
     </section>
   );
@@ -180,11 +184,11 @@ function Process() {
   return (
     <section className="band gray" id="process">
       <div className="inner">
-        <div className="head">
+        <div className="head" data-reveal>
           <h2>진행 방식</h2>
           <p>단계마다 결과물을 하나씩 드립니다. 중간에 방향을 바꾸거나 멈춰도 됩니다.</p>
         </div>
-        <ol className="steps">
+        <ol className="steps" id="step-rail">
           {process.map((p, i) => (
             <li key={p.step}>
               <span className="no">{i + 1}단계</span>
@@ -194,6 +198,7 @@ function Process() {
             </li>
           ))}
         </ol>
+        <RailDots railId="step-rail" count={process.length} label="진행 단계 카드 위치" />
       </div>
     </section>
   );
@@ -205,11 +210,11 @@ function Founder() {
   return (
     <section className="band" id="founder">
       <div className="inner">
-        <div className="head">
+        <div className="head" data-reveal>
           <h2>대표 {site.founder.name}</h2>
           <p>중학교 2학년. 겪은 불편을 서비스로 만듭니다.</p>
         </div>
-        <div className="founder">
+        <div className="founder" data-reveal>
           <div className="story">
             <p>
               해커톤에 나가려다 디자인을 맡아 줄 팀원을 못 구해 포기한 적이 있습니다. 그 일로 팀원을
@@ -263,10 +268,10 @@ function Questions() {
   return (
     <section className="band gray" id="faq">
       <div className="inner">
-        <div className="head">
+        <div className="head" data-reveal>
           <h2>자주 받는 질문</h2>
         </div>
-        <div className="faq">
+        <div className="faq" data-reveal>
           {faqs.map((f) => (
             <details key={f.q}>
               <summary>{f.q}</summary>
@@ -285,7 +290,7 @@ function Contact() {
   return (
     <section className="band contact" id="contact">
       <div className="inner">
-        <div className="head">
+        <div className="head" data-reveal>
           <h2>만들고 싶은 게 있으면 한두 줄로 보내 주세요.</h2>
           <p>예산이나 일정은 정해진 것만 적어도 됩니다. 보통 하루 안에 답장합니다.</p>
         </div>

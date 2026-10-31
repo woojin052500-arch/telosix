@@ -44,22 +44,38 @@
   padding-right: max(22px, env(safe-area-inset-right, 0px));
 }
 
+/* 움직임과 모서리: 한곳에서 정하고 전체가 같은 값을 씁니다. */
+:root {
+  --ease: cubic-bezier(0.28, 0.11, 0.32, 1);      /* 애플식 감속 곡선 */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --r-tile: 28px;   /* 큰 타일 · 카드 */
+  --r-card: 22px;   /* 휴대폰 카드 */
+  --r-chip: 12px;
+}
+
 /* ------------------------------------------------------------- 링크 · 버튼 */
 
-/* 애플식 텍스트 링크: 파란 글자 + 꺾쇠 */
+/* 애플식 텍스트 링크: 파란 글자 + 꺾쇠. 올리면 꺾쇠가 살짝 밀려납니다. */
 .more { color: var(--color-brand); font-size: 17px; white-space: nowrap; }
-.more::after { content: " ›"; font-size: 1.15em; line-height: 1; }
-.more:hover { text-decoration: underline; text-underline-offset: 3px; }
+.more::after {
+  content: "›"; display: inline-block; margin-left: 4px; font-size: 1.15em; line-height: 1;
+  transition: transform 0.3s var(--ease);
+}
+.more:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.more:hover::after { transform: translateX(3px); }
 .dark .more { color: #8fb0ef; }
 
 .pill {
-  display: inline-block; border-radius: 980px; padding: 11px 22px; font-size: 17px; line-height: 1.2;
-  border: 1px solid var(--color-brand); transition: background 0.2s, color 0.2s;
+  display: inline-block; border-radius: 980px; padding: 12px 23px; font-size: 17px; line-height: 1.18;
+  border: 1px solid var(--color-brand);
+  transition: background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.2s var(--ease);
 }
 .pill.fill { background: var(--color-brand); color: #fff; }
 .pill.fill:hover { background: var(--color-brand-dark); border-color: var(--color-brand-dark); }
 .pill.line { color: var(--color-brand); }
 .pill.line:hover { background: var(--color-brand); color: #fff; }
+.pill:active { transform: scale(0.97); }
+.pill:focus-visible { outline-offset: 4px; border-radius: 980px; }
 
 .ctas { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 14px 26px; margin-top: 24px; }
 
@@ -70,44 +86,76 @@
   background: rgba(251, 251, 253, 0.8);
   backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease);
 }
+/* 메뉴가 열리면 상단 막대도 메뉴와 같은 불투명 배경으로 이어집니다 */
+.gnav:has(.menu.open), .gnav:has(.menu.closing) { background: #fbfbfd; border-bottom-color: transparent; }
 .gnav .inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.gnav .logo { line-height: 0; }
+.gnav .logo { line-height: 0; transition: opacity 0.3s var(--ease); }
+.gnav .logo:hover { opacity: 0.72; }
 .gnav .logo img { height: 14px; width: auto; }
 .gnav .links { display: flex; gap: 34px; font-size: 13px; }
-.gnav .links a { color: rgba(29, 29, 31, 0.8); }
+.gnav .links a { color: rgba(29, 29, 31, 0.8); transition: color 0.3s var(--ease); }
 .gnav .links a:hover { color: var(--color-ink); }
-.gnav .ask { font-size: 13px; color: var(--color-brand); }
+/* 넓은 화면의 문의하기: 작은 알약 버튼 */
+.gnav > .inner > .ask {
+  font-size: 12px; line-height: 1; color: #fff; background: var(--color-brand);
+  padding: 6px 12px; border-radius: 980px; transition: background 0.3s var(--ease), transform 0.2s var(--ease);
+}
+.gnav > .inner > .ask:hover { background: var(--color-brand-dark); }
+.gnav > .inner > .ask:active { transform: scale(0.96); }
 
-/* 좁은 화면: 두 줄 아이콘을 누르면 화면을 덮는 메뉴가 펼쳐짐 */
+/* 좁은 화면: 두 줄 아이콘 → X, 화면을 덮는 메뉴 */
 .gnav .menu { display: none; }
 .gnav .menu summary {
   list-style: none; cursor: pointer; width: 44px; height: 44px; margin-right: -12px;
-  display: grid; place-items: center;
+  display: grid; place-items: center; border-radius: var(--r-chip);
 }
 .gnav .menu summary::-webkit-details-marker { display: none; }
 .gnav .bars { position: relative; width: 18px; height: 8px; }
 .gnav .bars::before, .gnav .bars::after {
-  content: ""; position: absolute; left: 0; right: 0; height: 1.5px; border-radius: 1px;
-  background: var(--color-ink); transition: transform 0.25s, top 0.25s;
+  content: ""; position: absolute; left: 0; right: 0; height: 1.5px; border-radius: 1px; background: var(--color-ink);
+  /* 닫힐 때: 먼저 기울기를 풀고, 그다음 위아래로 벌어짐 */
+  transition: transform 0.2s var(--ease) 0s, top 0.2s var(--ease) 0.18s;
 }
 .gnav .bars::before { top: 0; }
 .gnav .bars::after { top: 6.5px; }
-.gnav .menu[open] .bars::before { top: 3.25px; transform: rotate(45deg); }
-.gnav .menu[open] .bars::after { top: 3.25px; transform: rotate(-45deg); }
+.gnav .menu[open]:not(.closing) .bars::before,
+.gnav .menu[open]:not(.closing) .bars::after {
+  /* 열릴 때: 먼저 가운데로 모이고, 그다음 X로 기울어짐 */
+  transition: top 0.2s var(--ease) 0s, transform 0.2s var(--ease) 0.18s;
+  top: 3.25px;
+}
+.gnav .menu[open]:not(.closing) .bars::before { transform: rotate(45deg); }
+.gnav .menu[open]:not(.closing) .bars::after { transform: rotate(-45deg); }
+
 .gnav .menu nav {
   position: absolute; left: 0; right: 0; top: 48px; height: calc(100dvh - 48px);
-  background: #fbfbfd;
-  padding: 20px max(40px, env(safe-area-inset-left, 0px)) 40px;
-  display: flex; flex-direction: column; gap: 4px;
+  background: #fbfbfd; overflow-y: auto; overscroll-behavior: contain;
+  padding: 16px max(40px, env(safe-area-inset-left, 0px)) 40px;
+  display: flex; flex-direction: column; gap: 2px;
 }
-.gnav .menu nav a { font-size: 28px; font-weight: 700; letter-spacing: -0.03em; padding: 6px 0; color: var(--color-ink); }
-.gnav .menu nav a.ask { display: block; font-size: 28px; color: var(--color-brand); margin-top: 12px; }
+.gnav .menu nav a {
+  font-size: 28px; font-weight: 700; letter-spacing: -0.03em; padding: 7px 0; color: var(--color-ink);
+  transition: color 0.2s var(--ease);
+}
+.gnav .menu nav a:active { color: var(--color-sub); }
+.gnav .menu nav a.ask { display: block; font-size: 28px; color: var(--color-brand); margin-top: 14px; }
+
+/* 열림: 배경이 내려오며 나타나고 항목이 위에서부터 차례로 떠오름. 닫힘: 함께 빠르게 사라짐 */
+.gnav .menu.open nav { animation: menu-in 0.32s var(--ease-out) both; }
+.gnav .menu.open nav a { animation: item-in 0.42s var(--ease-out) both; animation-delay: calc(60ms + var(--i, 0) * 32ms); }
+.gnav .menu.closing nav { animation: menu-out 0.28s var(--ease) both; }
+.gnav .menu.closing nav a { animation: item-out 0.18s var(--ease) both; }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: none; } }
+@keyframes menu-out { from { opacity: 1; } to { opacity: 0; transform: translateY(-6px); } }
+@keyframes item-in { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+@keyframes item-out { to { opacity: 0; transform: translateY(-6px); } }
+
 @media (max-width: 760px) {
   .gnav .links, .gnav > .inner > .ask { display: none; }
   .gnav .menu { display: block; }
 }
-@media (prefers-reduced-motion: reduce) { .gnav .bars::before, .gnav .bars::after { transition: none; } }
 
 /* ------------------------------------------------------------------- 구획 */
 
@@ -169,7 +217,7 @@ sup.ref a:hover { text-decoration: underline; }
 .grid .ctas { margin-top: 18px; }
 @media (max-width: 760px) {
   .grid { grid-template-columns: 1fr; gap: 10px; padding: 10px; }
-  .grid .tile { min-height: 0; padding: 44px 24px 48px; border-radius: 0; }
+  .grid .tile { min-height: 0; padding: 44px 24px 48px; border-radius: var(--r-card); }
   .grid .rec { padding-top: 28px; }
 }
 @media (max-width: 760px) {
@@ -257,7 +305,6 @@ sup.ref a:hover { text-decoration: underline; }
 .faq summary::after { content: "+"; font-size: 26px; font-weight: 300; color: var(--color-sub); transition: transform 0.2s; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq p { margin: 0; padding: 0 40px 24px 0; color: var(--color-sub); font-size: 17px; }
-@media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } .pill { transition: none; } }
 
 /* 문의 */
 .contact .mail { display: inline-block; margin-top: 32px; font-size: clamp(20px, 3vw, 28px); font-weight: 600; letter-spacing: -0.02em; color: var(--color-ink); user-select: all; }
@@ -275,3 +322,71 @@ sup.ref a:hover { text-decoration: underline; }
 .gfoot a:hover { text-decoration: underline; color: var(--color-ink); }
 .gfoot .legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; padding-top: 14px; }
 @media (max-width: 560px) { .gfoot .cols { grid-template-columns: 1fr 1fr; } }
+
+/* ================================================================ 디테일 */
+
+/* 둥근 타일: 스코어랩 구획과 서비스 타일이 같은 모서리 · 같은 바깥 여백(12px)을 씀 */
+.tile.feature { margin: 12px 12px 0; border-radius: var(--r-tile); }
+.grid .tile { border-radius: var(--r-tile); }
+.card { border-radius: var(--r-tile); }
+.founder aside { border-radius: var(--r-tile); }
+@media (max-width: 760px) {
+  .tile.feature { margin: 10px 10px 0; border-radius: var(--r-card); }
+  .grid .tile, .card, .founder aside, .steps li { border-radius: var(--r-card); }
+}
+
+/* 마우스를 올리면 살짝 떠오름(마우스가 있는 기기만) */
+@media (hover: hover) and (pointer: fine) {
+  .grid .tile, .card {
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    will-change: transform;
+  }
+  .grid .tile:hover { transform: scale(1.012); box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.28); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -26px rgba(0, 0, 0, 0.22); }
+}
+
+/* 옆으로 넘기는 카드 아래 위치 점 (휴대폰에서만) */
+.dots { display: none; }
+@media (max-width: 760px) {
+  .dots { display: flex; justify-content: center; gap: 4px; margin-top: 14px; }
+  .dots button {
+    width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer;
+    display: grid; place-items: center; border-radius: 980px;
+  }
+  .dots button::before {
+    content: ""; width: 7px; height: 7px; border-radius: 980px; background: var(--color-line);
+    transition: width 0.35s var(--ease), background 0.35s var(--ease);
+  }
+  .dots button.on::before { width: 20px; background: var(--color-ink); }
+  .band.gray .dots button:not(.on)::before { background: #c7c7cc; }
+}
+
+/* 질문 펼침: 지원하는 브라우저에서는 높이가 부드럽게 열림 */
+:root { interpolate-size: allow-keywords; }
+.faq details::details-content {
+  block-size: 0; overflow: hidden;
+  transition: block-size 0.38s var(--ease), content-visibility 0.38s allow-discrete;
+}
+.faq details[open]::details-content { block-size: auto; }
+.faq summary { transition: color 0.2s var(--ease); }
+.faq summary:hover { color: var(--color-brand); }
+.faq summary::after { transition: transform 0.35s var(--ease); }
+
+/* 첫 화면: 들어올 때 제목 → 부제 → 버튼 → 로고 순서로 떠오름 */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero h1 { animation: rise 0.9s var(--ease-out) both; }
+.hero .sub { animation: rise 0.9s var(--ease-out) 0.08s both; }
+.hero .ctas { animation: rise 0.9s var(--ease-out) 0.16s both; }
+.hero .stage { animation: rise 1.1s var(--ease-out) 0.26s both; }
+.hero .note { animation: rise 0.9s var(--ease-out) 0.4s both; }
+
+/* 스크롤해서 보일 때 떠오름. 처음 화면 밖에 있던 요소만 숨김(Reveal.tsx) */
+[data-reveal] { transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+[data-reveal].pre { opacity: 0; transform: translateY(28px); }
+.grid [data-reveal]:nth-child(even) { transition-delay: 0.08s; }
+
+/* 움직임 줄이기 설정을 켠 경우 모든 애니메이션을 끔 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal].pre { opacity: 1; transform: none; }
+}
