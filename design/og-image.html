@@ -1,0 +1,23 @@
+<!doctype html>
+<!--
+  공유 미리보기 이미지(public/og-image.png) 원본.
+  1200×630 창에서 열어 그대로 캡처하면 됩니다. 문구를 바꾼 뒤에는
+  src/app/layout.tsx 의 og-image.png?v= 숫자도 올려 주세요(캐시 방지).
+-->
+<meta charset="utf-8">
+<link rel="stylesheet" href="pretendard-local.css">
+<style>
+:root { --ink:#24262c; --brand:#2853a8; --faint:#8a8f9c; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; font-family: "Pretendard Variable", sans-serif; color: var(--ink); background: #fff; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+.wm { position: absolute; left: 88px; top: 84px; height: 30px; width: auto; }
+h1 { position: absolute; left: 88px; top: 50%; transform: translateY(-50%); font-size: 76px; line-height: 1.28; font-weight: 700; letter-spacing: -0.03em; }
+h1 em { font-style: normal; color: var(--brand); }
+.foot { position: absolute; left: 88px; bottom: 80px; font-size: 26px; color: var(--faint); font-weight: 500; }
+.mark { position: absolute; right: 88px; top: 50%; transform: translateY(-50%); width: 300px; height: auto; }
+</style>
+<img class="wm" src="../public/logo-wordmark.png" alt="">
+<h1>웹사이트와 웹서비스를<br>만드는 <em>1인 회사</em></h1>
+<img class="mark" src="../public/logo-mark.png" alt="">
+<p class="foot">telosix.co.kr · 구 WJedulab</p>

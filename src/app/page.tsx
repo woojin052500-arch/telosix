@@ -4,16 +4,34 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import { credentials, faqs, press, process, services, site, works } from "@/lib/site";
 
+/** 숫자 옆 각주 번호. 푸터의 출처 목록으로 이어집니다. */
+function Ref({ n }: { n: number }) {
+  return (
+    <sup className="ref">
+      <a href={`#fn-${n}`} aria-label={`출처 ${n}`}>
+        {n}
+      </a>
+    </sup>
+  );
+}
+
+const byTitle = (t: string) => {
+  const w = works.find((x) => x.title.startsWith(t));
+  if (!w) throw new Error(`works에 ${t}가 없습니다`);
+  return w;
+};
+
 export default function Home() {
   return (
     <>
       <JsonLd />
       <Header />
-      <main id="main" className="wrap">
-        <Intro />
+      <main id="main">
+        <Hero />
+        <Featured />
+        <Grid />
         <Services />
         <Process />
-        <Work />
         <Founder />
         <Questions />
         <Contact />
@@ -23,226 +41,266 @@ export default function Home() {
   );
 }
 
-/* --------------------------------------------------------------- Intro */
+/* ---------------------------------------------------------------- 첫 화면 */
 
-function Intro() {
+function Hero() {
   return (
-    <section className="intro" id="top">
-      <div className="tx">
-        <h1>텔로식은 웹사이트와 웹서비스를 만드는 1인 회사입니다.</h1>
-        <p>
-          대표 <b>{site.founder.name}</b>이 기획, 개발, 배포, 검색 등록까지 직접 합니다. 스코어랩, 끌,
-          500원 광고판을 만들어 운영하고 있고, 같은 방식으로 다른 분들의 사이트도 만듭니다.
-        </p>
-        <p>
-          {site.foundedMonth}에 창업했고 사업자등록을 마쳤습니다. 이전 이름은 {site.formerName}
-          입니다.
-        </p>
-        <p className="reach">
-          문의는 <a href={`mailto:${site.email}`}>{site.email}</a> 또는{" "}
-          <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-            인스타그램 @{site.instagram}
+    <section className="tile hero" id="top">
+      <div className="inner">
+        <h1>
+          <span className="sr-only">TELOSIX(텔로식): </span>
+          웹사이트와 웹서비스를 만드는 <em>1인 회사.</em>
+        </h1>
+        <p className="sub">기획부터 개발, 배포, 검색 등록까지. 대표가 처음부터 끝까지 직접 합니다.</p>
+        <div className="ctas">
+          <a className="pill fill" href="#contact">
+            문의하기
           </a>
-          로 보내 주세요.
-        </p>
+          <a className="more" href="#work">
+            만든 것 보기
+          </a>
+        </div>
       </div>
-      <Image
-        className="mark"
-        src="/logo-mark.png"
-        alt=""
-        width={512}
-        height={240}
-        priority
-      />
+      <div className="stage">
+        <Image src="/logo-mark.png" alt="TELOSIX 로고" width={512} height={240} priority />
+      </div>
+      <p className="note">
+        {site.foundedMonth} 창업 · 사업자등록 완료 · 구 {site.formerName}
+      </p>
     </section>
   );
 }
 
-/* ------------------------------------------------------------ Services */
+/* ------------------------------------------------------- 대표 서비스: 스코어랩 */
+
+function Featured() {
+  const w = byTitle("스코어랩");
+  return (
+    <section className="tile gray" id="work">
+      <div className="inner">
+        <p className="eyebrow">직접 만들고 운영하는 서비스</p>
+        <h2>스코어랩</h2>
+        <p className="sub">{w.headline}</p>
+        <div className="ctas">
+          <a className="more" href={w.url} target="_blank" rel="noopener noreferrer">
+            사이트 열기
+          </a>
+        </div>
+      </div>
+      <div className="figures">
+        <div className="figure">
+          <span className="n">
+            9,360<small>회</small>
+            <Ref n={1} />
+          </span>
+          <span className="l">구글 검색 클릭</span>
+        </div>
+        <div className="figure">
+          <span className="n">
+            75만<small>회</small>
+            <Ref n={2} />
+          </span>
+          <span className="l">홍보 릴스 1개 조회수, 유료 광고 없이</span>
+        </div>
+        <div className="figure">
+          <span className="n">
+            51<small>개교</small>
+            <Ref n={3} />
+          </span>
+          <span className="l">등록 학교, 12개교에서 시작</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------ 서비스 격자 */
+
+function Grid() {
+  const items = [
+    { w: byTitle("끌"), name: "끌", tone: "gray", big: "100여 명", ref: 4, label: "출시 2주 만의 설치 수" },
+    { w: byTitle("500원"), name: "500원 광고판", tone: "dark", big: "260,000원", ref: 5, label: "출시 4일 매출 · 광고주 12곳 입점" },
+    { w: byTitle("Certa"), name: "Certa", tone: "dark", big: "108종", ref: 0, label: "자격증 정보, 문항 300개 이상" },
+    { w: byTitle("Grid Shift"), name: "Grid Shift", tone: "gray", big: "베타", ref: 0, label: "구글 플레이 베타 테스트" },
+  ];
+  return (
+    <section className="grid" aria-label="다른 서비스">
+      {items.map(({ w, name, tone, big, ref, label }) => (
+        <article key={name} className={`tile ${tone}`}>
+          <p className="kind">{w.kind}</p>
+          <h2>{name}</h2>
+          <p className="sub">{w.headline}</p>
+          {w.url && (
+            <div className="ctas">
+              <a className="more" href={w.url} target="_blank" rel="noopener noreferrer">
+                사이트 열기
+              </a>
+            </div>
+          )}
+          <div className="rec">
+            <b>
+              {big}
+              {ref > 0 && <Ref n={ref} />}
+            </b>
+            <span>{label}</span>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
+}
+
+/* --------------------------------------------------------------- 하는 일 */
 
 function Services() {
   return (
-    <section className="sec" id="services">
-      <h2>하는 일</h2>
-      <p className="sub">외주로 맡을 수 있는 일은 아래 네 가지입니다.</p>
-      <dl className="defs">
-        {services.map((s) => (
-          <div key={s.title}>
-            <dt>
-              <h3>{s.title}</h3>
-            </dt>
-            <dd>
-              {s.desc}
-              <span className="stack">{s.meta}</span>
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------- Process */
-
-function Process() {
-  return (
-    <section className="sec" id="process">
-      <h2>진행 방식</h2>
-      <p className="sub">
-        단계마다 결과물을 하나씩 드립니다. 중간에 방향을 바꾸거나 멈춰도 됩니다.
-      </p>
-      <ol className="steps">
-        {process.map((p) => (
-          <li key={p.step}>
-            <b>{p.title}</b>
-            <span>{p.doing}</span>
-            <em>{p.out}</em>
-          </li>
-        ))}
-      </ol>
-    </section>
-  );
-}
-
-/* ---------------------------------------------------------------- Work */
-
-function Work() {
-  return (
-    <section className="sec" id="work">
-      <h2>만든 것</h2>
-      <p className="sub">외주가 아니라 직접 내놓고 운영한 서비스입니다. 숫자는 실제 기록입니다.</p>
-      <table className="works tx">
-        <thead>
-          <tr>
-            <th scope="col">서비스</th>
-            <th scope="col">내용</th>
-            <th scope="col">기록</th>
-            <th scope="col">출시</th>
-          </tr>
-        </thead>
-        <tbody>
-          {works.map((w) => (
-            <tr key={w.title}>
-              <td className="name">
-                {w.url ? (
-                  <a href={w.url} target="_blank" rel="noopener noreferrer">
-                    {w.title}
-                  </a>
-                ) : (
-                  w.title
-                )}
-                <small>{w.kind}</small>
-              </td>
-              <td className="what">{w.note}</td>
-              <td className="rec">{w.result}</td>
-              <td className="when">{w.year}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h3 style={{ margin: "36px 0 10px" }}>언론 보도</h3>
-      <ul className="press tx">
-        {press.map((p) => (
-          <li key={p.url}>
-            <span className="src">{p.outlet}</span>
-            <a href={p.url} target="_blank" rel="noopener noreferrer">
-              {p.title}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------- Founder */
-
-function Founder() {
-  return (
-    <section className="sec" id="founder">
-      <h2>대표 {site.founder.name}</h2>
-      <p className="sub">{site.founder.nameEn} · 중학교 2학년</p>
-      <div className="founder">
-        <div className="body tx">
-          <p>
-            해커톤에 나가려다 디자인을 맡아 줄 팀원을 못 구해 포기한 적이 있습니다. 그때 팀원을 찾는
-            앱 <b>끌</b>을 만들었고, 고입 준비를 하다 내 점수로 갈 수 있는 학교를 보여주는{" "}
-            <b>스코어랩</b>을 만들었습니다. 제가 겪은 불편이 그대로 서비스가 됐습니다.
-          </p>
-          <p>
-            스코어랩은 유료 광고 없이 올린 릴스 영상 하나가 <b>약 75만 회</b> 재생되면서 알려졌고,
-            구글 검색 클릭은 9월 말까지 <b>9,360회</b>입니다. 처음 12개교로 시작한 학교 목록은
-            이용자 요청을 받아 51개교가 됐습니다.
-          </p>
-          <p>
-            회사 이름은 광고판에서 시작한 우진애드링크, 교육 쪽으로 넓힌 WJedulab을 거쳐 지금의
-            TELOSIX가 됐습니다.
-          </p>
-          <p>
-            더 자세한 기록은{" "}
-            <a href={site.founder.portfolio} target="_blank" rel="noopener noreferrer">
-              대표 포트폴리오
-            </a>
-            에 있습니다.
-          </p>
+    <section className="band" id="services">
+      <div className="inner">
+        <div className="head">
+          <h2>하는 일</h2>
+          <p>외주로 맡을 수 있는 일은 네 가지입니다. 직접 운영하는 서비스와 같은 방식으로 만듭니다.</p>
         </div>
-        <aside>
-          {credentials.map((c) => (
-            <div key={c.label}>
-              <h3>{c.label}</h3>
-              <ul>
-                {c.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+        <div className="cards">
+          {services.map((s) => (
+            <article className="card" key={s.title}>
+              <h3>{s.title}</h3>
+              <p>{s.desc}</p>
+              <span className="meta">{s.meta}</span>
+            </article>
           ))}
-        </aside>
+        </div>
       </div>
     </section>
   );
 }
 
-/* ----------------------------------------------------------- Questions */
+/* ------------------------------------------------------------- 진행 방식 */
 
-function Questions() {
+function Process() {
   return (
-    <section className="sec" id="faq">
-      <h2>자주 받는 질문</h2>
-      <p className="sub">상담 전에 많이 물어보시는 것들입니다.</p>
-      <dl className="qa">
-        {faqs.map((f) => (
-          <div key={f.q}>
-            <dt>{f.q}</dt>
-            <dd>{f.a}</dd>
-          </div>
-        ))}
-      </dl>
+    <section className="band gray" id="process">
+      <div className="inner">
+        <div className="head">
+          <h2>진행 방식</h2>
+          <p>단계마다 결과물을 하나씩 드립니다. 중간에 방향을 바꾸거나 멈춰도 됩니다.</p>
+        </div>
+        <ol className="steps">
+          {process.map((p, i) => (
+            <li key={p.step}>
+              <span className="no">{i + 1}단계</span>
+              <h3>{p.title}</h3>
+              <p>{p.doing}</p>
+              <span className="out">{p.out}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
   );
 }
 
-/* ------------------------------------------------------------- Contact */
+/* ------------------------------------------------------------------ 대표 */
+
+function Founder() {
+  return (
+    <section className="band" id="founder">
+      <div className="inner">
+        <div className="head">
+          <h2>대표 {site.founder.name}</h2>
+          <p>중학교 2학년. 겪은 불편을 서비스로 만듭니다.</p>
+        </div>
+        <div className="founder">
+          <div className="story">
+            <p>
+              해커톤에 나가려다 디자인을 맡아 줄 팀원을 못 구해 포기한 적이 있습니다. 그 일로 팀원을
+              찾는 앱 <b>끌</b>을 만들었고, 고입을 준비하다 내 점수로 갈 수 있는 학교를 알기 어려워{" "}
+              <b>스코어랩</b>을 만들었습니다.
+            </p>
+            <p>
+              회사 이름은 광고판에서 시작한 <b>우진애드링크</b>, 교육 쪽으로 넓힌 <b>{site.formerName}</b>
+              을 거쳐 지금의 <b>TELOSIX</b>가 됐습니다.
+            </p>
+            <p>
+              <a className="more" href={site.founder.portfolio} target="_blank" rel="noopener noreferrer">
+                대표 포트폴리오 보기
+              </a>
+            </p>
+          </div>
+          <aside>
+            {credentials.map((c) => (
+              <div key={c.label}>
+                <h3>{c.label}</h3>
+                <ul>
+                  {c.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            <div className="press">
+              <h3>언론 보도</h3>
+              <ul>
+                {press.map((p) => (
+                  <li key={p.url}>
+                    <span>{p.outlet}</span>
+                    <a href={p.url} target="_blank" rel="noopener noreferrer">
+                      {p.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ 질문 */
+
+function Questions() {
+  return (
+    <section className="band gray" id="faq">
+      <div className="inner">
+        <div className="head">
+          <h2>자주 받는 질문</h2>
+        </div>
+        <div className="faq">
+          {faqs.map((f) => (
+            <details key={f.q}>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ 문의 */
 
 function Contact() {
   return (
-    <section className="sec contact tx" id="contact">
-      <h2>문의</h2>
-      <p>
-        만들고 싶은 것을 한두 줄로 보내 주세요. 예산이나 일정은 정해진 것만 적으셔도 됩니다. 보통
-        하루 안에 답장합니다.
-      </p>
-      <a className="mail" href={`mailto:${site.email}?subject=[TELOSIX] 문의`}>
-        {site.email}
-      </a>
-      <p>
-        인스타그램 DM(
-        <a href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
-          @{site.instagram}
-        </a>
-        )도 받습니다.
-      </p>
+    <section className="band contact" id="contact">
+      <div className="inner">
+        <div className="head">
+          <h2>만들고 싶은 게 있으면 한두 줄로 보내 주세요.</h2>
+          <p>예산이나 일정은 정해진 것만 적어도 됩니다. 보통 하루 안에 답장합니다.</p>
+        </div>
+        <div className="ctas">
+          <a className="pill fill" href={`mailto:${site.email}?subject=[TELOSIX] 문의`}>
+            이메일 보내기
+          </a>
+          <a className="more" href={site.instagramUrl} target="_blank" rel="noopener noreferrer">
+            인스타그램 DM
+          </a>
+        </div>
+        <p className="hint">
+          <span className="mail">{site.email}</span>
+        </p>
+      </div>
     </section>
   );
 }
