@@ -1,4 +1,5 @@
 import Image from "next/image";
+import MobileMenu from "@/components/MobileMenu";
 
 const nav = [
   { href: "#work", label: "만든 것" },
@@ -25,19 +26,7 @@ export default function Header() {
         <a className="ask" href="#contact">
           문의하기
         </a>
-        <details className="menu">
-          <summary>메뉴</summary>
-          <nav aria-label="모바일 메뉴">
-            {nav.map((n) => (
-              <a key={n.href} href={n.href}>
-                {n.label}
-              </a>
-            ))}
-            <a className="ask" href="#contact">
-              문의하기
-            </a>
-          </nav>
-        </details>
+        <MobileMenu links={nav} />
       </div>
     </header>
   );
