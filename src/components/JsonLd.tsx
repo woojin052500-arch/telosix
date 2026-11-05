@@ -31,6 +31,7 @@ export default function JsonLd() {
     subjectOf: press.map((p) => ({
       "@type": "NewsArticle",
       headline: p.title,
+      datePublished: p.date,
       url: p.url,
       publisher: { "@type": "Organization", name: p.outlet },
     })),

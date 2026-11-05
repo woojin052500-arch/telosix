@@ -17,6 +17,7 @@ export default function Footer() {
           <div>
             <h3>회사</h3>
             <ul>
+              <li><a href="#press">언론 보도</a></li>
               <li><a href="#services">하는 일</a></li>
               <li><a href="#process">진행 방식</a></li>
               <li><a href="#founder">대표</a></li>

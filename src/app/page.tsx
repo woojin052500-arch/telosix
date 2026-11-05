@@ -33,6 +33,7 @@ export default function Home() {
         <Hero />
         <Featured />
         <Grid />
+        <Press />
         <Services />
         <Process />
         <Founder />
@@ -153,6 +154,44 @@ function Grid() {
   );
 }
 
+/* ------------------------------------------------------------- 언론 보도 */
+
+const dot = (d: string) => d.replaceAll("-", ".");
+
+function Press() {
+  return (
+    <section className="band gray" id="press">
+      <div className="inner">
+        <div className="head" data-reveal>
+          <h2>언론에 소개된 TELOSIX</h2>
+          <p>인터뷰와 기획 보도에 실린 이야기입니다.</p>
+        </div>
+        <div className="press" id="press-rail">
+          {press.map((p) => (
+            <article className="article" key={p.url} data-reveal>
+              <p className="src">
+                <b>{p.outlet}</b>
+                <span>{p.kind}</span>
+                <time dateTime={p.date}>{dot(p.date)}</time>
+              </p>
+              <blockquote>
+                <p>{p.quote}</p>
+                <footer>{site.founder.name} 대표</footer>
+              </blockquote>
+              <h3>{p.title}</h3>
+              <a className="more" href={p.url} target="_blank" rel="noopener noreferrer">
+                기사 읽기
+                <span className="sr-only">: {p.title}</span>
+              </a>
+            </article>
+          ))}
+        </div>
+        <RailDots railId="press-rail" count={press.length} label="기사 카드 위치" />
+      </div>
+    </section>
+  );
+}
+
 /* --------------------------------------------------------------- 하는 일 */
 
 function Services() {
@@ -242,19 +281,6 @@ function Founder() {
                 </ul>
               </div>
             ))}
-            <div className="press">
-              <h3>언론 보도</h3>
-              <ul>
-                {press.map((p) => (
-                  <li key={p.url}>
-                    <span>{p.outlet}</span>
-                    <a href={p.url} target="_blank" rel="noopener noreferrer">
-                      {p.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </aside>
         </div>
       </div>

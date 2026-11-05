@@ -3,6 +3,7 @@ import MobileMenu from "@/components/MobileMenu";
 
 const nav = [
   { href: "#work", label: "만든 것" },
+  { href: "#press", label: "언론 보도" },
   { href: "#services", label: "하는 일" },
   { href: "#process", label: "진행 방식" },
   { href: "#founder", label: "대표" },
