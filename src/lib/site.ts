@@ -37,11 +37,24 @@ export const site = {
   ],
 } as const;
 
-/** 언론 보도 */
+/** 언론 보도. 최신 기사가 앞에 옵니다. quote는 기사에 실린 대표의 말입니다. */
 export const press = [
   {
-    outlet: "내외뉴스통신",
-    title: "TELOSIX 대표 염우진 인터뷰",
+    outlet: "대한민국청소년의회 유스연합",
+    kind: "기획 보도",
+    date: "2026-11-02",
+    title:
+      "천안 중학생 창업가 염우진 Telosix 대표, 수행평가 채점표 풀어주는 AI '감점제로'로 전국 청소년 AI 경진대회 도전",
+    quote:
+      "AI로 채점 기준을 쉽게 이해할 수 있게 풀어주어, 모두가 공정하게 과제의 본질에 집중할 수 있는 환경을 만들고 싶다.",
+    url: "https://www.youthassembly.kr/news/1027177",
+  },
+  {
+    outlet: "nbn 시사경제",
+    kind: "인터뷰",
+    date: "2026-10-07",
+    title: "[인터뷰] 팀원 없어 해커톤 포기했던 중학생, 어떻게 1인 창업자가 됐나?",
+    quote: "작게라도 먼저 만들어 보여주면, 나머지는 사용자가 알려준다.",
     url: "http://www.nbnbiz.co.kr/news/articleView.html?idxno=46236",
   },
 ];
