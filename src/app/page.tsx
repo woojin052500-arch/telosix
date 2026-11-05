@@ -243,11 +243,11 @@ function Advantages() {
 
 function Work() {
   const items = [
-    { w: byTitle("스코어랩"), name: "스코어랩", big: "51개교", ref: 3, label: "등록 학교, 12개교에서 시작", glow: "rgba(40,83,168,.7)", gx: "75%", gy: "25%" },
-    { w: byTitle("끌"), name: "끌", big: "100여 명", ref: 4, label: "출시 2주 만의 설치 수", glow: "rgba(180,191,211,.35)", gx: "25%", gy: "20%" },
-    { w: byTitle("500원"), name: "500원 광고판", big: "260,000원", ref: 5, label: "출시 4일 매출 · 광고주 12곳", glow: "rgba(40,83,168,.55)", gx: "20%", gy: "80%" },
-    { w: byTitle("Certa"), name: "Certa", big: "108종", ref: 0, label: "자격증 정보, 문항 300개 이상", glow: "rgba(143,176,239,.32)", gx: "80%", gy: "70%" },
-    { w: byTitle("Grid Shift"), name: "Grid Shift", big: "베타", ref: 0, label: "구글 플레이 베타 테스트", glow: "rgba(58,61,69,.9)", gx: "50%", gy: "10%" },
+    { w: byTitle("스코어랩"), name: "스코어랩", big: "51개교", ref: 3, label: "등록 학교, 12개교에서 시작", glow: "rgba(40,83,168,.26)", gx: "75%", gy: "25%" },
+    { w: byTitle("끌"), name: "끌", big: "100여 명", ref: 4, label: "출시 2주 만의 설치 수", glow: "rgba(180,191,211,.7)", gx: "25%", gy: "20%" },
+    { w: byTitle("500원"), name: "500원 광고판", big: "260,000원", ref: 5, label: "출시 4일 매출 · 광고주 12곳", glow: "rgba(40,83,168,.2)", gx: "20%", gy: "80%" },
+    { w: byTitle("Certa"), name: "Certa", big: "108종", ref: 0, label: "자격증 정보, 문항 300개 이상", glow: "rgba(143,176,239,.4)", gx: "80%", gy: "70%" },
+    { w: byTitle("Grid Shift"), name: "Grid Shift", big: "베타", ref: 0, label: "구글 플레이 베타 테스트", glow: "rgba(58,61,69,.16)", gx: "50%", gy: "10%" },
   ];
   return (
     <section className="sec" id="work">
