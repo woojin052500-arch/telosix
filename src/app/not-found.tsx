@@ -8,13 +8,15 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="wrap tx" style={{ padding: "96px 24px" }}>
-      <p style={{ color: "var(--color-faint)", margin: 0 }}>404</p>
-      <h1 style={{ fontSize: 26, margin: "8px 0 12px" }}>찾으시는 페이지가 없습니다</h1>
-      <p style={{ color: "var(--color-muted)", margin: "0 0 20px" }}>
-        주소가 바뀌었거나 삭제된 페이지일 수 있습니다.
-      </p>
-      <Link href="/">처음으로 돌아가기</Link>
+    <main className="inner" style={{ paddingBlock: "120px" }}>
+      <p className="eyebrow">404.</p>
+      <h1 className="title">찾으시는 페이지가 없습니다</h1>
+      <p className="lead">주소가 바뀌었거나 삭제된 페이지일 수 있습니다.</p>
+      <div className="btns" style={{ marginTop: 32 }}>
+        <Link className="btn" href="/">
+          처음으로 <span className="arr" aria-hidden>→</span>
+        </Link>
+      </div>
     </main>
   );
 }
