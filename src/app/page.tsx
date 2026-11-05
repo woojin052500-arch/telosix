@@ -6,6 +6,7 @@ import RailDots from "@/components/RailDots";
 import Reveal from "@/components/Reveal";
 import {
   advantages,
+  awards,
   credentials,
   faqs,
   press,
@@ -145,6 +146,22 @@ function About() {
               </a>
             </div>
           </div>
+        </div>
+        <div className="awards" data-reveal>
+          <h3>
+            수상 <span>{awards.length}</span>
+          </h3>
+          <ol>
+            {awards.map((a) => (
+              <li key={a.title}>
+                <time>{a.date}</time>
+                <p>
+                  {a.title}
+                  {a.note && <small>{a.note}</small>}
+                </p>
+              </li>
+            ))}
+          </ol>
         </div>
         <div className="creds" data-reveal>
           {credentials.map((c) => (

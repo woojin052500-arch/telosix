@@ -186,11 +186,16 @@ export const works = [
   },
 ];
 
+/** 수상. 최신순. 네이버 인물 정보에 등록된 5건과 같습니다. */
+export const awards = [
+  { date: "2026.08", title: "전국 중학생 창업아이디어 경진대회 금상", note: "창업진흥원장상 · 한국디지털미디어고등학교 주최" },
+  { date: "2026.08", title: "제43회 한국정보올림피아드(KOI) 본선 장려상", note: "중등부" },
+  { date: "2026.06", title: "충남 학생 AI코딩 창의력 한마당 금상", note: "" },
+  { date: "2026.05", title: "제43회 한국정보올림피아드(KOI) 1차 동상", note: "중등부" },
+  { date: "2025.06", title: "충남 학생 AI코딩 창의력 한마당 표창", note: "충청남도교육청" },
+];
+
 export const credentials = [
-  { label: "수상", items: [
-    "전국 중학생 창업아이디어 경진대회 금상 · 창업진흥원장상 (1위, 2026)",
-    "한국정보올림피아드 KOI 동상 · 장려상 (2026)",
-  ]},
   { label: "자격", items: [
     "Google Analytics 4",
     "PMI Project Management Ready",
