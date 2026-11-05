@@ -1,4 +1,4 @@
-import { faqs, press, services, site, works } from "@/lib/site";
+import { awards, faqs, press, services, site, works } from "@/lib/site";
 
 /** 검색엔진용 구조화 데이터(schema.org). 리치 결과 노출에 사용됩니다. */
 export default function JsonLd() {
@@ -60,6 +60,7 @@ export default function JsonLd() {
     url: site.founder.portfolio,
     sameAs: [site.founder.portfolio, site.instagramUrl],
     knowsAbout: ["TypeScript", "Next.js", "React", "Supabase", "SEO"],
+    award: awards.map((a) => `${a.title} (${a.date.slice(0, 4)})`),
   };
 
   const website = {

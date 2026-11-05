@@ -219,14 +219,27 @@ sup.ref a:hover { color: var(--color-accent); }
 .about .story p.small { font-size: 16px; color: var(--color-sub); letter-spacing: -0.01em; }
 .about .more { display: flex; align-items: center; gap: 24px; margin-top: 36px; }
 .about .more hr { flex: 1; border: 0; border-top: 1px solid var(--color-line-strong); margin: 0; }
-.creds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--color-line); }
+/* 수상: 날짜 | 이름 줄 목록 */
+.awards { margin-top: 64px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 16px 72px; }
+.awards h3 { margin: 0; font-size: clamp(22px, 2.4vw, 28px); font-weight: 400; letter-spacing: -0.03em; }
+.awards h3 span { color: var(--color-accent); margin-left: 4px; }
+.awards ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--color-line); }
+.awards li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--color-line); }
+.awards time { font-size: 14px; color: var(--color-faint); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.awards p { margin: 0; font-size: 17px; letter-spacing: -0.02em; }
+.awards small { display: block; margin-top: 2px; font-size: 13.5px; color: var(--color-faint); letter-spacing: -0.01em; }
+.awards li:first-child p { color: var(--color-accent); }
+.creds { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; margin-top: 44px; }
 .creds h3 { margin: 0 0 10px; font-size: 13px; font-weight: 500; color: var(--color-faint); }
 .creds ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14.5px; color: var(--color-sub); }
 @media (max-width: 860px) {
   .about { grid-template-columns: 1fr; gap: 28px; }
   .about .side { flex-direction: row; align-items: center; }
   .about .mark { width: 96px; flex: none; }
-  .creds { grid-template-columns: 1fr; gap: 22px; margin-top: 48px; }
+  .creds { grid-template-columns: 1fr; gap: 22px; margin-top: 36px; }
+  .awards { grid-template-columns: 1fr; margin-top: 48px; }
+  .awards li { grid-template-columns: 70px minmax(0, 1fr); gap: 12px; padding: 16px 0; }
+  .awards p { font-size: 16px; }
 }
 
 /* ------------------------------------------------------------ 서비스 목록 */
