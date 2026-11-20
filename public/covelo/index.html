@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>COVELO · 전국 고등학교·대학교 창업·IT 동아리 연합</title>
+<meta name="description" content="COVELO는 전국 고등학교·대학교 창업·IT 동아리 연합입니다. 동아리 운영은 각 학교에 그대로 두고, 동아리 사이에서 정보와 사람, 무대를 이어 줍니다." />
+<meta name="theme-color" content="#FFFFFF" />
+<meta property="og:title" content="COVELO · 전국 고등학교·대학교 창업·IT 동아리 연합" />
+<meta property="og:description" content="동아리 운영은 각 학교에 그대로 두고, 동아리 사이에서 팀과 무대와 사람을 이어 줍니다." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --ink: #111111;
+    --body: #1A1A1A;
+    --muted: #555555;
+    --faint: #8A8A8A;
+    --line: #EAEAEA;
+    --radius: 12px;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
+    font-size: 17px;
+    line-height: 1.78;
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: #111111; color: #FFFFFF; }
+
+  .wrap {
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    padding-inline: 24px;
+  }
+
+  a { color: inherit; }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid #111111;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* 헤더 */
+  .site-header {
+    padding-block: 22px 0;
+  }
+  .site-header .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .brand {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 4px 0;
+  }
+  .header-link {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 10px 0;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .header-link:hover { color: var(--ink); }
+
+  /* 히어로 */
+  .hero {
+    padding-block: 56px 64px;
+  }
+  .kicker {
+    margin: 0 0 18px;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--muted);
+    letter-spacing: 0.01em;
+  }
+  .wordmark {
+    margin: 0;
+    font-size: clamp(46px, 13.6vw, 76px);
+    line-height: 1.02;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+  .lede {
+    margin: 26px 0 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--body);
+  }
+  .lede strong { font-weight: 600; }
+
+  .cta-group {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 360px;
+  }
+  .hero-facts {
+    margin: 22px 0 0;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .cta-repeat { margin-top: 32px; }
+  .note { margin-top: 16px; }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 56px;
+    padding: 15px 24px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.16s ease, color 0.16s ease, border-color 0.16s ease;
+  }
+  .btn-primary { background: var(--ink); color: #FFFFFF; }
+  .btn-primary:hover { background: #000000; }
+  .btn-ghost { background: #FFFFFF; color: var(--ink); border-color: #DCDCDC; }
+  .btn-ghost:hover { border-color: #111111; }
+
+  /* 섹션 */
+  .section {
+    padding-block: 52px 0;
+    margin-top: 52px;
+    border-top: 1px solid var(--line);
+  }
+  .section:last-of-type { padding-block: 52px 8px; }
+  h2 {
+    margin: 0 0 20px;
+    font-size: 21px;
+    line-height: 1.45;
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  h3 {
+    margin: 0;
+    font-size: 17.5px;
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  p { margin: 0 0 18px; color: var(--body); text-wrap: pretty; }
+  li, dd { text-wrap: pretty; }
+  p:last-child { margin-bottom: 0; }
+  .muted { color: var(--muted); }
+  .small { font-size: 15px; line-height: 1.72; }
+  .section-lede { color: var(--muted); margin-bottom: 8px; }
+  .text-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: #C4C4C4;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.16s ease;
+  }
+  .text-link:hover { text-decoration-color: #111111; }
+
+  /* 부담 없는 참여 */
+  .sub-label {
+    margin: 34px 0 0;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--faint);
+  }
+  .plain-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 0;
+  }
+  .plain-list li {
+    position: relative;
+    padding: 16px 0 16px 16px;
+    border-bottom: 1px solid var(--line);
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--body);
+  }
+  .plain-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 29px;
+    width: 6px;
+    height: 1px;
+    background: #B5B5B5;
+  }
+  .plain-list li:last-child { border-bottom: 0; }
+
+  /* 프로그램 */
+  .programs { list-style: none; margin: 20px 0 0; padding: 0; }
+  .programs li { padding: 28px 0; border-top: 1px solid var(--line); }
+  .programs li:last-child { padding-bottom: 4px; }
+  .num {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .programs p.desc {
+    margin: 14px 0 0;
+    font-size: 16px;
+    line-height: 1.78;
+    color: var(--body);
+  }
+  .programs p.gain {
+    margin: 12px 0 0;
+    font-size: 15px;
+    line-height: 1.72;
+    color: var(--muted);
+  }
+  .tag {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--faint);
+  }
+
+  /* 운영 기반 */
+  .person { padding-top: 4px; }
+  .person.lead { margin-top: 34px; }
+  .role-label.mid { margin-top: 28px; }
+  .role-label {
+    margin: 0 0 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--faint);
+  }
+  .person .name {
+    margin: 0 0 10px;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.45;
+  }
+  .person .name span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: -0.005em;
+  }
+  .affil {
+    margin: 0 0 18px;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .divider { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+
+  .awards {
+    list-style: none;
+    margin: 22px 0 0;
+    padding: 0;
+  }
+  .awards li {
+    display: flex;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--body);
+  }
+  .awards li:first-child { border-top: 1px solid var(--line); }
+  .awards .date {
+    flex: none;
+    width: 66px;
+    color: var(--faint);
+    font-size: 13.5px;
+    font-variant-numeric: tabular-nums;
+    padding-top: 1px;
+  }
+  .person .btn { margin-top: 26px; max-width: 360px; }
+
+  /* 참여 안내 */
+  .rows { margin: 4px 0 0; }
+  .rows .row {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .rows .row:first-child { border-top: 1px solid var(--line); }
+  .rows dt {
+    flex: none;
+    width: 76px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--faint);
+  }
+  .rows dd {
+    margin: 0;
+    flex: 1 1 auto;
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--body);
+  }
+
+  /* 문의 */
+  .links { margin: 4px 0 0; }
+  .links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 60px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+  .links a:first-child { border-top: 1px solid var(--line); }
+  .links .label { font-size: 16px; color: var(--ink); }
+  .links .value {
+    font-size: 14.5px;
+    color: var(--muted);
+    text-align: right;
+    transition: color 0.16s ease;
+  }
+  .links a:hover .value { color: var(--ink); }
+
+  /* 푸터 */
+  .site-footer {
+    margin-top: 64px;
+    padding-block: 40px 56px;
+    border-top: 1px solid var(--line);
+  }
+  .site-footer .fw {
+    margin: 0 0 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--ink);
+  }
+  .site-footer p {
+    margin: 0 0 6px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .site-footer .copy {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--faint);
+  }
+
+  @media (max-width: 559px) {
+    .rows .row { display: block; }
+    .rows dt { width: auto; margin-bottom: 3px; font-size: 13px; letter-spacing: 0.01em; }
+    .rows dd { font-size: 16px; }
+  }
+
+  @media (min-width: 720px) {
+    body { font-size: 17.5px; }
+    .hero { padding-block: 80px 64px; }
+    h2 { font-size: 24px; margin-bottom: 24px; }
+    h3 { font-size: 18.5px; }
+    .section { padding-top: 60px; margin-top: 60px; }
+    .cta-group { flex-direction: row; max-width: none; }
+    .cta-group .btn { width: auto; min-width: 200px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn, .text-link, .links .value { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap inner">
+    <a class="brand" href="#top" aria-label="COVELO 처음으로">COVELO</a>
+    <a class="header-link" href="#join">참여 안내</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero wrap">
+    <p class="kicker">전국 고등학교·대학교 창업·IT 동아리 연합</p>
+    <h1 class="wordmark">COVELO</h1>
+    <p class="lede">각 학교에 흩어져 있는 창업·IT 동아리를 연결합니다. 동아리 운영은 각 학교에 그대로 두고, 동아리와 동아리 사이에서 팀과 무대와 사람을 이어 줍니다.</p>
+    <div class="cta-group">
+      <a class="btn btn-primary" href="mailto:ceo@telosix.co.kr?subject=COVELO%20%ED%8C%80%20%EC%B0%B8%EC%97%AC%20%EB%AC%B8%EC%9D%98">참여 문의하기</a>
+      <a class="btn btn-ghost" href="https://apricot-bagpipe-9b9.notion.site/COVELO-IT-41dc7c25205281e5b763eb6d3f8b9644" target="_blank" rel="noopener">운영 계획안 보기</a>
+    </div>
+    <p class="hero-facts">회비 없음 · 대표·운영진 1~2인 · 이름과 운영 그대로</p>
+  </section>
+
+  <section class="section wrap" id="about">
+    <h2>동아리 사이를 잇습니다</h2>
+    <p>고등학교와 대학교의 창업·IT 동아리는 대부분 한 학교 안에서만 움직입니다. 팀원은 같은 학교, 같은 학년에서 구하고, 행사 규모는 학교 예산과 인원에 맞춰지며, 현업 개발자나 디자이너, 창업가를 만날 기회는 거의 없습니다. 기획은 있는데 같이 만들 사람과 봐 줄 사람이 없어 중간에 멈추는 팀도 많습니다.</p>
+    <p><strong>COVELO는 이 세 가지를 한 번에 풀기 위해 만든 연합입니다.</strong> 동아리 운영은 각 학교에 그대로 두고, 동아리와 동아리 사이에서 정보와 사람, 무대를 이어 줍니다. 각 학교에서 가장 잘하는 동아리들이 서로의 팀원이 되고, 서로의 발표를 듣고 평가하는 자리까지 함께 만듭니다.</p>
+    <p class="small muted">기존 동아리 운영, 행사, 스터디 위에 얹는 방식입니다. 이미 하고 있는 활동을 하나 더 늘리는 대신, 그 활동이 닿는 범위를 넓힙니다.</p>
+
+    <p class="sub-label">부담 없이 참여합니다</p>
+    <ul class="plain-list">
+      <li>회비는 없습니다. 각 동아리의 운영과 일정은 지금 그대로 유지됩니다.</li>
+      <li>이름, 로고, 기존 활동과 운영권은 그대로 두고 참여합니다.</li>
+      <li>새 행사를 의무로 만들지 않습니다. 참여하지 않는 프로그램은 동아리 일정에 맞춰 조정합니다.</li>
+    </ul>
+  </section>
+
+  <section class="section wrap" id="programs">
+    <h2>연합이 하는 일</h2>
+    <p class="section-lede">네 가지 프로그램으로 움직입니다. 그중 현업 전문가와 창업지원 기관 연결은 지금 연계 방식을 조율하고 있습니다. 초기 합류 동아리는 이 프로그램의 형식과 일정을 함께 정합니다.</p>
+
+    <ol class="programs">
+      <li>
+        <p class="num">01</p>
+        <h3>정보·네트워킹 허브</h3>
+        <p class="desc">공모전, 해커톤, 지원사업 공고와 팀원 구인 수요를 한곳에서 정리합니다. 참여 동아리 대표와 운영진만 들어오는 카카오톡 팀채팅에서 공고를 마감과 핵심 조건 위주로 요약해 올리고, 동아리별 팀원 구인과 협업 요청을 받습니다. 한 달에 한 번은 각 동아리의 활동 근황을 공유합니다.</p>
+        <p class="gain">공고를 찾는 시간이 줄고, 마감을 놓치는 지원사업이 줄어듭니다. 다른 학교 동아리가 무엇을 준비하는지도 자연스럽게 보입니다.</p>
+      </li>
+      <li>
+        <p class="num">02</p>
+        <h3>크로스 팀 빌딩과 연합 해커톤</h3>
+        <p class="desc">학교 안에서는 구하기 어려운 인력과 역량을 다른 학교에서 찾습니다. 2~3일짜리 단기 해커톤을 기획하고, 기획·개발·디자인 역할별로 다른 학교 인원을 붙여 줍니다. 결과물이 나온 팀은 실제로 서비스를 출시하는 공동 프로젝트로 이어 가는 것을 기본으로 하고, 주제는 참여 동아리가 제안한 실제 문제에서 고릅니다.</p>
+        <p class="gain">포트폴리오로 남길 수 있는 결과물과 다른 학교 팀과의 협업 관계를 함께 얻습니다.</p>
+      </li>
+      <li>
+        <p class="num">03</p>
+        <h3>데모데이와 세션 상호 교류</h3>
+        <p class="desc">동아리별 데모데이와 세미나 일정을 연합 채널에서 공유하고 서로 초대합니다. 연 1~2회는 참여 동아리가 함께 기획하고 운영하는 연합 IR·데모데이 세션을 엽니다. 발표 자료를 준비하고 서로 피드백을 주고받는 자리도 여기에 포함됩니다.</p>
+        <p class="gain">발표할 기회와 듣는 사람이 늘고, 다른 학교 동아리가 어떻게 운영하고 발표하는지 직접 보고 배울 수 있습니다.</p>
+      </li>
+      <li>
+        <p class="num">04</p>
+        <h3>현업 전문가·창업지원 기관 연결 <span class="tag">준비 중</span></h3>
+        <p class="desc">학생 팀이 닿기 어려운 현업의 피드백과 학생 창업 지원사업 정보를 정기적으로 받습니다. 기본은 분기에 한 번 온·오프라인 커피챗이고, 동아리별 프로덕트·초기 사업 자문과 소규모 특강을 요청이 있을 때 붙입니다. 연결 통로는 운영 주체가 방장으로 있는 10대 창업가 네트워크 U20 Founders의 멘토진과, 운영 주체의 소속 기관인 한국기술창업진흥재단입니다.</p>
+        <p class="gain">발표 자료와 제품을 시장 기준으로 점검받고, 세무나 지원사업 같은 실무에서 헤매는 시간을 줄입니다. 지금은 연계 방식을 조율하는 단계이며, 정리되는 대로 참여 동아리에 먼저 공유합니다.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section class="section wrap" id="early">
+    <h2>처음 합류하는 동아리는</h2>
+    <p>초기 합류 동아리는 프로그램을 받아 쓰는 쪽이 아니라, 프로그램을 같이 만드는 쪽입니다.</p>
+    <ul class="plain-list">
+      <li>교류 주기, 연합 행사 형식, 정보 공유 범위를 초기 동아리 대표진과 함께 정합니다.</li>
+      <li>모집과 행사 소식을 인스타그램 @we.covelo와 참여 동아리 네트워크로 함께 알립니다.</li>
+      <li>멘토·자문 연결과 지원사업 안내를 동아리 단위로 먼저 받습니다.</li>
+    </ul>
+  </section>
+
+  <section class="section wrap" id="team">
+    <h2>운영 기반</h2>
+    <p>COVELO는 Telosix 대표 염우진이 운영합니다. 멘토 연결은 U20 Founders의 멘토진과 한국기술창업진흥재단을 통해 이뤄지며, 운영 주체와 멘토진은 서로 다른 갈래입니다.</p>
+
+    <div class="person lead">
+      <p class="role-label">운영 주체</p>
+      <p class="name">염우진 <span>Telosix 대표</span></p>
+      <p class="affil">한국기술창업진흥재단 소속 · 10대 창업가 네트워크 U20 Founders 방장</p>
+      <p>중학생 창업가이자 웹 개발자입니다. TypeScript와 Next.js 기반 프론트엔드 구축, Supabase 백엔드 설계, C와 C++ 알고리즘 문제 해결까지 서비스 개발의 전 과정을 직접 다룹니다. Telosix에서 공모전·대회 팀 매칭 서비스 끌과 실시간 익명 Q&amp;A 서비스 소곤을 만들고 운영하고 있으며, 한국디지털미디어고등학교 진학을 준비하고 있습니다.</p>
+
+      <p class="role-label mid">수상 경력</p>
+      <ul class="awards">
+        <li><span class="date">2026.08</span><span>전국 중학생 창업아이디어 경진대회 금상</span></li>
+        <li><span class="date">2026.08</span><span>제43회 한국정보올림피아드 2차대회 중등부 전체부문 장려상</span></li>
+        <li><span class="date">2026.06</span><span>제3회 충남 학생 AI코딩 창의력 한마당 금상</span></li>
+        <li><span class="date">2026.05</span><span>제43회 한국정보올림피아드 1차대회 중등부 지역부문 동상, 전체부문 장려상</span></li>
+        <li><span class="date">2025.06</span><span>제2회 충남 학생 AI코딩 창의력 한마당 표창장</span></li>
+      </ul>
+
+      <a class="btn btn-ghost" href="https://tapple.co.kr/card/card-0RSGV17S3FYKF" target="_blank" rel="noopener">운영자 디지털 명함</a>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="person">
+      <p class="role-label">멘토 연계</p>
+      <p class="name">U20 Founders 멘토진</p>
+      <p>개발·프로덕트·글로벌 시장 경험이 있는 현업 스타트업 대표진이 제품 리뷰와 초기 사업 자문을 맡고, 세무사가 사업자 등록과 지원사업 정산, 비용 처리처럼 학생 창업에서 막히기 쉬운 세무 실무를 자문합니다. 초청 분야와 주제는 초기 합류 동아리의 요청을 먼저 반영합니다.</p>
+      <p class="small muted">한국기술창업진흥재단의 학생 창업 지원사업과 행사, 멘토링 프로그램 연계는 운영 주체의 소속 기관을 통해 추진합니다. 연계 방식이 정리되는 대로 참여 동아리에 먼저 공유합니다.</p>
+    </div>
+  </section>
+
+  <section class="section wrap" id="join">
+    <h2>참여 안내</h2>
+    <p class="section-lede">동아리 하나가 참여하기까지 필요한 결정은 대표·운영진의 검토 한 번이면 충분합니다.</p>
+    <dl class="rows">
+      <div class="row"><dt>대상</dt><dd>전국 고등학교·대학교 창업 및 IT 동아리</dd></div>
+      <div class="row"><dt>참여 인원</dt><dd>동아리 대표·운영진 1~2인</dd></div>
+      <div class="row"><dt>회비·부담</dt><dd>회비 없음. 각 동아리의 자체 운영과 일정은 그대로 유지됩니다.</dd></div>
+      <div class="row"><dt>준비물</dt><dd>없음. 기존 활동, 이름, 로고를 그대로 두고 참여합니다.</dd></div>
+      <div class="row"><dt>절차</dt><dd>동아리 내부 검토, 합류 의사 회신, 팀채팅방 초대 및 1:1 온보딩 순서로 진행합니다.</dd></div>
+    </dl>
+
+    <div class="cta-group cta-repeat">
+      <a class="btn btn-primary" href="mailto:ceo@telosix.co.kr?subject=COVELO%20%ED%8C%80%20%EC%B0%B8%EC%97%AC%20%EB%AC%B8%EC%9D%98">참여 문의하기</a>
+    </div>
+    <p class="small muted note">검토에 필요한 자료나 설명이 더 필요하시면 요청 주시는 대로 정리해 보내드립니다.</p>
+  </section>
+
+  <section class="section wrap" id="contact">
+    <h2>채널과 문의</h2>
+    <div class="links">
+      <a href="https://apricot-bagpipe-9b9.notion.site/COVELO-IT-41dc7c25205281e5b763eb6d3f8b9644" target="_blank" rel="noopener">
+        <span class="label">상세 운영 계획안</span>
+        <span class="value">Notion</span>
+      </a>
+      <a href="https://www.instagram.com/we.covelo" target="_blank" rel="noopener">
+        <span class="label">인스타그램</span>
+        <span class="value">@we.covelo</span>
+      </a>
+      <a href="mailto:ceo@telosix.co.kr">
+        <span class="label">이메일</span>
+        <span class="value">ceo@telosix.co.kr</span>
+      </a>
+      <a href="tel:+821063767604">
+        <span class="label">전화</span>
+        <span class="value">010-6376-7604</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer wrap">
+  <p class="fw">COVELO</p>
+  <p>전국 고등학교·대학교 창업·IT 동아리 연합</p>
+  <p>운영 Telosix 대표 염우진 · 한국기술창업진흥재단 소속</p>
+  <p class="copy">© 2026 COVELO</p>
+</footer>
+
+</body>
+</html>
